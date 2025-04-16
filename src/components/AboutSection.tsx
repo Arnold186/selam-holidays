@@ -9,7 +9,7 @@ const AboutSection = () => {
           <div className="md:w-1/2">
             <div className="mb-6">
               <span className="section-subtitle">ABOUT US</span>
-              <h2 className="text-left section-title">Let's know About Our Journey For TripRex</h2>
+              <h2 className="text-left section-title">Your Trusted Travel Partner in Africa and Beyond</h2>
             </div>
             
             <div className="flex flex-col gap-6 mb-8">
@@ -22,9 +22,9 @@ const AboutSection = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg text-tertiary-dark mb-2">Mission & Vision</h3>
+                  <h3 className="font-semibold text-lg text-tertiary-dark mb-2">Who We Are</h3>
                   <p className="text-tertiary">
-                    To provide exceptional travel experiences that inspire adventure, foster cultural connections, and create lasting memories while promoting sustainable tourism practices.
+                    Selam Holidays is a Rwanda-based travel and tour company dedicated to helping you discover the beauty of Africa and explore global destinations with ease. Whether you're planning a once-in-a-lifetime gorilla trek, a weekend getaway, or a business trip abroad, our team of experts is here to make your journey smooth and memorable.
                   </p>
                 </div>
               </div>
@@ -36,15 +36,15 @@ const AboutSection = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg text-tertiary-dark mb-2">Focus On Customer</h3>
+                  <h3 className="font-semibold text-lg text-tertiary-dark mb-2">Our Destinations</h3>
                   <p className="text-tertiary">
-                    We prioritize personalized service and attention to detail, ensuring each traveler receives a tailor-made journey that exceeds expectations and creates memorable experiences.
+                    Our destinations include Rwanda, Uganda, Kenya, Tanzania, Ethiopia, Dubai, Turkey, Egypt, France, and more. We're constantly expanding our reach to provide you with the best travel experiences around the world.
                   </p>
                 </div>
               </div>
             </div>
             
-            <button className="btn-primary">More About</button>
+            <button className="btn-primary">More About Us</button>
           </div>
           
           <div className="md:w-1/2 grid grid-cols-12 gap-4">
@@ -65,7 +65,7 @@ const AboutSection = () => {
                 />
               </div>
               <div className="bg-secondary p-4 rounded-lg text-white text-center flex flex-col justify-center">
-                <span className="text-4xl font-bold">98+</span>
+                <span className="text-4xl font-bold">10+</span>
                 <span className="text-sm mt-1">Countries</span>
               </div>
             </div>

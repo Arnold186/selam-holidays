@@ -11,16 +11,23 @@ const HeroSection = () => {
       <div className="container-custom relative z-10 h-full">
         <div className="flex flex-col justify-center h-full max-w-3xl pt-20">
           <div className="bg-secondary inline-block px-6 py-2 rounded-full mb-5 w-fit">
-            <h2 className="text-white font-medium">Enjoy</h2>
+            <h2 className="text-white font-medium">Welcome</h2>
           </div>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            Lets trek and venture to a spot.
+            Explore the World, One Journey at a Time
           </h1>
           
           <p className="text-lg mb-8 opacity-90">
-            Life is short, adventures are waiting, and the hidden spots of the Planet are calling. Enjoy Paris, New York, Venice, Sydney or anywhere that feels like home to you.
+            At Selam Holidays, we turn your travel dreams into reality with seamless planning, expert guidance, and unforgettable experiences.
           </p>
+          
+          <div className="flex flex-wrap gap-3 mb-8">
+            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">✈️ Flight Bookings</span>
+            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">Custom Tours</span>
+            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">Group Excursions</span>
+            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">Visa Assistance</span>
+          </div>
           
           <button className="btn-primary w-fit">
             Book A Trip
@@ -38,10 +45,15 @@ const HeroSection = () => {
                 <div className="relative">
                   <select className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
                     <option value="">Select a location</option>
-                    <option value="paris">Paris</option>
-                    <option value="rome">Rome</option>
-                    <option value="london">London</option>
-                    <option value="tokyo">Tokyo</option>
+                    <option value="rwanda">Rwanda</option>
+                    <option value="uganda">Uganda</option>
+                    <option value="kenya">Kenya</option>
+                    <option value="tanzania">Tanzania</option>
+                    <option value="ethiopia">Ethiopia</option>
+                    <option value="dubai">Dubai</option>
+                    <option value="turkey">Turkey</option>
+                    <option value="egypt">Egypt</option>
+                    <option value="france">France</option>
                   </select>
                   <div className="absolute right-3 top-3 text-primary">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,10 +69,11 @@ const HeroSection = () => {
                 <div className="relative">
                   <select className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
                     <option value="">Select tour type</option>
-                    <option value="adventure">Adventure</option>
-                    <option value="beach">Beach</option>
-                    <option value="cultural">Cultural</option>
-                    <option value="historical">Historical</option>
+                    <option value="gorilla">Gorilla Trekking</option>
+                    <option value="safari">Safari</option>
+                    <option value="cultural">Cultural Tour</option>
+                    <option value="holiday">Holiday Package</option>
+                    <option value="city">City Break</option>
                   </select>
                   <div className="absolute right-3 top-3 text-primary">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -82,6 +95,12 @@ const HeroSection = () => {
                     <option value="april">April</option>
                     <option value="may">May</option>
                     <option value="june">June</option>
+                    <option value="july">July</option>
+                    <option value="august">August</option>
+                    <option value="september">September</option>
+                    <option value="october">October</option>
+                    <option value="november">November</option>
+                    <option value="december">December</option>
                   </select>
                   <div className="absolute right-3 top-3 text-primary">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -96,11 +115,11 @@ const HeroSection = () => {
                 <div className="relative">
                   <select className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
                     <option value="">Select duration</option>
-                    <option value="1-3">1-3 days</option>
-                    <option value="3-5">3-5 days</option>
-                    <option value="5-7">5-7 days</option>
-                    <option value="7-10">7-10 days</option>
-                    <option value="10+">10+ days</option>
+                    <option value="1">1 day</option>
+                    <option value="2-3">2-3 days</option>
+                    <option value="4-7">4-7 days</option>
+                    <option value="7-14">7-14 days</option>
+                    <option value="14+">14+ days</option>
                   </select>
                   <div className="absolute right-3 top-3 text-primary">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

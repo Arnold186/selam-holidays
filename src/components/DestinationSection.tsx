@@ -4,24 +4,24 @@ import { ArrowRight } from "lucide-react";
 
 const destinations = [
   {
-    name: "Sweden",
-    image: "https://images.unsplash.com/photo-1586699253884-e199770f63d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+    name: "Rwanda",
+    image: "https://images.unsplash.com/photo-1601211994000-d47c02688ebe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
   },
   {
-    name: "Japan",
-    image: "https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+    name: "Uganda",
+    image: "https://images.unsplash.com/photo-1545212590-1761479b8b9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
   },
   {
-    name: "India",
-    image: "https://images.unsplash.com/photo-1585135497273-1a86b09fe70e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+    name: "Kenya",
+    image: "https://images.unsplash.com/photo-1518550475464-99b1438b6b0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
   },
   {
-    name: "Brazil",
-    image: "https://images.unsplash.com/photo-1516834611397-8d633eaec5d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+    name: "Tanzania",
+    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
   },
   {
-    name: "Australia",
-    image: "https://images.unsplash.com/photo-1524820197278-540916411e20?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+    name: "Dubai",
+    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
   },
 ];
 
@@ -30,12 +30,12 @@ const DestinationSection = () => {
     <section className="section-container">
       <div className="container-custom">
         <div className="text-center mb-12">
-          <span className="section-subtitle">TOUR & TRAVELS</span>
-          <h2 className="section-title">Desired Vacation Spots</h2>
+          <span className="section-subtitle">OUR DESTINATIONS</span>
+          <h2 className="section-title">Explore Our Popular Destinations</h2>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* First Row - Two Destinations */}
+          {/* First Row - Three Destinations */}
           <div className="relative rounded-lg overflow-hidden h-64 card-hover">
             <img 
               src={destinations[0].image} 
@@ -100,7 +100,7 @@ const DestinationSection = () => {
           <div className="rounded-lg bg-orange-50 h-64 flex flex-col items-center justify-center p-6">
             <div className="text-center">
               <p className="text-secondary font-medium mb-1">View All</p>
-              <h3 className="text-xl font-semibold text-tertiary-dark mb-4">Of Our All Destination</h3>
+              <h3 className="text-xl font-semibold text-tertiary-dark mb-4">Of Our All Destinations</h3>
               <button className="btn-secondary">
                 View All Destinations <ArrowRight size={16} className="ml-2" />
               </button>
