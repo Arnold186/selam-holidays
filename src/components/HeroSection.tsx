@@ -96,12 +96,12 @@ const HeroSection = () => {
                     value={location}
                     onValueChange={(value) => setLocation(value)}
                   >
-                    <SelectTrigger className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary flex items-center">
+                    <SelectTrigger className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary flex items-center cursor-pointer">
                       <MapPin className="mr-2 text-primary" size={20} />
-                      <SelectValue placeholder="Select a location" />
+                      <SelectValue placeholder="Select a location" className="cursor-pointer" />
                       <ChevronDown className="ml-auto text-primary" size={20} />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-white">
                       <SelectItem value="rwanda">Rwanda</SelectItem>
                       <SelectItem value="uganda">Uganda</SelectItem>
                       <SelectItem value="kenya">Kenya</SelectItem>
@@ -128,12 +128,12 @@ const HeroSection = () => {
                     value={tourType}
                     onValueChange={(value) => setTourType(value)}
                   >
-                    <SelectTrigger className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary flex items-center">
+                    <SelectTrigger className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary flex items-center cursor-pointer">
                       <Briefcase className="mr-2 text-primary" size={20} />
-                      <SelectValue placeholder="Select tour type" />
+                      <SelectValue placeholder="Select tour type" className="cursor-pointer" />
                       <ChevronDown className="ml-auto text-primary" size={20} />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-white">
                       <SelectItem value="gorilla">Gorilla Trekking</SelectItem>
                       <SelectItem value="safari">Safari</SelectItem>
                       <SelectItem value="cultural">Cultural Tour</SelectItem>
@@ -156,12 +156,12 @@ const HeroSection = () => {
                     value={month}
                     onValueChange={(value) => setMonth(value)}
                   >
-                    <SelectTrigger className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary flex items-center">
+                    <SelectTrigger className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary flex items-center cursor-pointer">
                       <Calendar className="mr-2 text-primary" size={20} />
-                      <SelectValue placeholder="Select a month" />
+                      <SelectValue placeholder="Select a month" className="cursor-pointer" />
                       <ChevronDown className="ml-auto text-primary" size={20} />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-white">
                       <SelectItem value="january">January</SelectItem>
                       <SelectItem value="february">February</SelectItem>
                       <SelectItem value="march">March</SelectItem>
@@ -191,12 +191,12 @@ const HeroSection = () => {
                     value={duration}
                     onValueChange={(value) => setDuration(value)}
                   >
-                    <SelectTrigger className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary flex items-center">
+                    <SelectTrigger className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary flex items-center cursor-pointer">
                       <Clock className="mr-2 text-primary" size={20} />
-                      <SelectValue placeholder="Select duration" />
+                      <SelectValue placeholder="Select duration" className="cursor-pointer" />
                       <ChevronDown className="ml-auto text-primary" size={20} />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-white z-50">
                       <SelectItem value="1">1 day</SelectItem>
                       <SelectItem value="2-3">2-3 days</SelectItem>
                       <SelectItem value="4-7">4-7 days</SelectItem>
