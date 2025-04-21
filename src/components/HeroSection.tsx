@@ -1,6 +1,13 @@
 
 import React, { useState } from "react";
-import { Search, MapPin, Briefcase, Calendar, Clock } from "lucide-react";
+import { Search, MapPin, Briefcase, Calendar, Clock, ChevronDown } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 const HeroSection = () => {
   const [location, setLocation] = useState("");
@@ -76,7 +83,7 @@ const HeroSection = () => {
       <div className="absolute bottom-0 left-0 right-0 transform translate-y-1/2">
         <div className="container-custom">
           <div className="bg-white rounded-lg shadow-lg p-6">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-black">
               <div className="space-y-2">
                 <label
                   htmlFor="location"
@@ -85,26 +92,27 @@ const HeroSection = () => {
                   Select Location
                 </label>
                 <div className="relative">
-                  <select
-                    id="location"
+                  <Select
                     value={location}
-                    onChange={(e) => setLocation(e.target.value)}
-                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-white text-black"
+                    onValueChange={(value) => setLocation(value)}
                   >
-                    <option value="">Select a location</option>
-                    <option value="rwanda">Rwanda</option>
-                    <option value="uganda">Uganda</option>
-                    <option value="kenya">Kenya</option>
-                    <option value="tanzania">Tanzania</option>
-                    <option value="ethiopia">Ethiopia</option>
-                    <option value="dubai">Dubai</option>
-                    <option value="turkey">Turkey</option>
-                    <option value="egypt">Egypt</option>
-                    <option value="france">France</option>
-                  </select>
-                  <div className="absolute right-3 top-3 text-primary pointer-events-none">
-                    <MapPin size={20} />
-                  </div>
+                    <SelectTrigger className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary flex items-center">
+                      <MapPin className="mr-2 text-primary" size={20} />
+                      <SelectValue placeholder="Select a location" />
+                      <ChevronDown className="ml-auto text-primary" size={20} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="rwanda">Rwanda</SelectItem>
+                      <SelectItem value="uganda">Uganda</SelectItem>
+                      <SelectItem value="kenya">Kenya</SelectItem>
+                      <SelectItem value="tanzania">Tanzania</SelectItem>
+                      <SelectItem value="ethiopia">Ethiopia</SelectItem>
+                      <SelectItem value="dubai">Dubai</SelectItem>
+                      <SelectItem value="turkey">Turkey</SelectItem>
+                      <SelectItem value="egypt">Egypt</SelectItem>
+                      <SelectItem value="france">France</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
 
@@ -116,22 +124,23 @@ const HeroSection = () => {
                   Select Tour Type
                 </label>
                 <div className="relative">
-                  <select
-                    id="tour-type"
+                  <Select
                     value={tourType}
-                    onChange={(e) => setTourType(e.target.value)}
-                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-white text-black"
+                    onValueChange={(value) => setTourType(value)}
                   >
-                    <option value="">Select tour type</option>
-                    <option value="gorilla">Gorilla Trekking</option>
-                    <option value="safari">Safari</option>
-                    <option value="cultural">Cultural Tour</option>
-                    <option value="holiday">Holiday Package</option>
-                    <option value="city">City Break</option>
-                  </select>
-                  <div className="absolute right-3 top-3 text-primary pointer-events-none">
-                    <Briefcase size={20} />
-                  </div>
+                    <SelectTrigger className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary flex items-center">
+                      <Briefcase className="mr-2 text-primary" size={20} />
+                      <SelectValue placeholder="Select tour type" />
+                      <ChevronDown className="ml-auto text-primary" size={20} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="gorilla">Gorilla Trekking</SelectItem>
+                      <SelectItem value="safari">Safari</SelectItem>
+                      <SelectItem value="cultural">Cultural Tour</SelectItem>
+                      <SelectItem value="holiday">Holiday Package</SelectItem>
+                      <SelectItem value="city">City Break</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
 
@@ -143,29 +152,30 @@ const HeroSection = () => {
                   Select Month
                 </label>
                 <div className="relative">
-                  <select
-                    id="month"
+                  <Select
                     value={month}
-                    onChange={(e) => setMonth(e.target.value)}
-                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-white text-black"
+                    onValueChange={(value) => setMonth(value)}
                   >
-                    <option value="">Select a month</option>
-                    <option value="january">January</option>
-                    <option value="february">February</option>
-                    <option value="march">March</option>
-                    <option value="april">April</option>
-                    <option value="may">May</option>
-                    <option value="june">June</option>
-                    <option value="july">July</option>
-                    <option value="august">August</option>
-                    <option value="september">September</option>
-                    <option value="october">October</option>
-                    <option value="november">November</option>
-                    <option value="december">December</option>
-                  </select>
-                  <div className="absolute right-3 top-3 text-primary pointer-events-none">
-                    <Calendar size={20} />
-                  </div>
+                    <SelectTrigger className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary flex items-center">
+                      <Calendar className="mr-2 text-primary" size={20} />
+                      <SelectValue placeholder="Select a month" />
+                      <ChevronDown className="ml-auto text-primary" size={20} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="january">January</SelectItem>
+                      <SelectItem value="february">February</SelectItem>
+                      <SelectItem value="march">March</SelectItem>
+                      <SelectItem value="april">April</SelectItem>
+                      <SelectItem value="may">May</SelectItem>
+                      <SelectItem value="june">June</SelectItem>
+                      <SelectItem value="july">July</SelectItem>
+                      <SelectItem value="august">August</SelectItem>
+                      <SelectItem value="september">September</SelectItem>
+                      <SelectItem value="october">October</SelectItem>
+                      <SelectItem value="november">November</SelectItem>
+                      <SelectItem value="december">December</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
 
@@ -177,22 +187,23 @@ const HeroSection = () => {
                   Select Duration
                 </label>
                 <div className="relative">
-                  <select
-                    id="duration"
+                  <Select
                     value={duration}
-                    onChange={(e) => setDuration(e.target.value)}
-                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-white text-black"
+                    onValueChange={(value) => setDuration(value)}
                   >
-                    <option value="">Select duration</option>
-                    <option value="1">1 day</option>
-                    <option value="2-3">2-3 days</option>
-                    <option value="4-7">4-7 days</option>
-                    <option value="7-14">7-14 days</option>
-                    <option value="14+">14+ days</option>
-                  </select>
-                  <div className="absolute right-3 top-3 text-primary pointer-events-none">
-                    <Clock size={20} />
-                  </div>
+                    <SelectTrigger className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary flex items-center">
+                      <Clock className="mr-2 text-primary" size={20} />
+                      <SelectValue placeholder="Select duration" />
+                      <ChevronDown className="ml-auto text-primary" size={20} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="1">1 day</SelectItem>
+                      <SelectItem value="2-3">2-3 days</SelectItem>
+                      <SelectItem value="4-7">4-7 days</SelectItem>
+                      <SelectItem value="7-14">7-14 days</SelectItem>
+                      <SelectItem value="14+">14+ days</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
             </div>
@@ -214,4 +225,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
