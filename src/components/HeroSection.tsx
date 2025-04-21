@@ -56,7 +56,7 @@ const HeroSection = () => {
           </div>
 
           {/* Moved "Book A Trip" button here under content */}
-          <button className="btn-primary w-fit mb-10" onClick={() => alert('Booking a trip!')}>
+          <button className="btn-primary w-fit mb-40" onClick={() => alert('Booking a trip!')}>
             Book A Trip
           </button>
         </div>
