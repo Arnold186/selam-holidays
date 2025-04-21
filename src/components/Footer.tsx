@@ -12,15 +12,11 @@ const Footer = () => {
           <div>
             <div className="flex items-center mb-6">
               <div className="text-primary mr-2">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" />
-                  <path d="M15 9L15 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  <path d="M9 9L9 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  <path d="M15 12L9 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  <path d="M5 5L7 7M19 5L17 7M19 19L17 17M5 19L7 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                </svg>
+              <div className="text-primary mr-2">
+              {/* <img src="/selam LOGO (2).png" alt="Logo" className="w-10 h-10" /> */}
+            </div>
               </div>
-              <span className="text-xl font-bold">TripRex</span>
+              <span className="text-xl font-bold">Selam Holiday</span>
             </div>
             
             <h3 className="text-lg font-semibold mb-4">Want To Take Tour Packages?</h3>
@@ -70,15 +66,15 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <Phone size={18} className="mr-3 text-primary mt-1" />
-                <span>+999-858 624 984</span>
+                <span>+250 785 713 489</span>
               </li>
               <li className="flex items-start">
                 <Mail size={18} className="mr-3 text-primary mt-1" />
-                <span>info@example.com</span>
+                <span>info@selam.com</span>
               </li>
               <li className="flex items-start">
                 <MapPin size={18} className="mr-3 text-primary mt-1" />
-                <span>House 168/170, Avenue 01, Mirpur DOHS, Dhaka Bangladesh</span>
+                <span>Kigali Norrskin House</span>
               </li>
             </ul>
           </div>
@@ -96,14 +92,14 @@ const Footer = () => {
               <div className="bg-indigo-600 text-white rounded px-2 py-1 text-xs font-semibold">Stripe</div>
               <div className="bg-blue-400 text-white rounded px-2 py-1 text-xs font-semibold">PayPal</div>
               <div className="bg-purple-600 text-white rounded px-2 py-1 text-xs font-semibold">WOO</div>
-              <div className="bg-red-500 text-white rounded px-2 py-1 text-xs font-semibold">Skrill</div>
+              {/* <div className="bg-red-500 text-white rounded px-2 py-1 text-xs font-semibold">Skrill</div> */}
             </div>
           </div>
         </div>
         
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-gray-400">
-            &copy;Copyright 2024 TripRex | Design By <span className="text-primary">Lovable</span>
+            &copy;Copyright 2024 Selam Holiday | Design By <span className="text-primary">Eloi</span>
           </p>
           
           <div className="flex space-x-4 mt-4 md:mt-0">

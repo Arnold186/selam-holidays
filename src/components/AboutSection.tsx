@@ -50,7 +50,7 @@ const AboutSection = () => {
           <div className="md:w-1/2 grid grid-cols-12 gap-4">
             <div className="col-span-7">
               <img 
-                src="/lovable-uploads/ba30746b-db8f-490a-a9a4-16fc6d526f0b.png" 
+                src="/Hello.jpg" 
                 alt="Beautiful resort with pool" 
                 className="w-full h-full object-cover rounded-lg"
               />
@@ -59,7 +59,7 @@ const AboutSection = () => {
             <div className="col-span-5 grid gap-4">
               <div>
                 <img 
-                  src="/lovable-uploads/b54407f2-7b2a-4cc5-8826-330261f77a2b.png" 
+                  src="/Hello.jpg" 
                   alt="Desert travel adventure" 
                   className="w-full h-full object-cover rounded-lg"
                 />

@@ -14,16 +14,10 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <div className="text-primary mr-2">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" />
-                <path d="M15 9L15 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                <path d="M9 9L9 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                <path d="M15 12L9 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                <path d="M5 5L7 7M19 5L17 7M19 19L17 17M5 19L7 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-              </svg>
-            </div>
-            <span className="text-xl font-bold text-tertiary-dark">TripRex</span>
+            {/* <div className="text-primary mr-2">
+              <img src="/selam LOGO (2).png" alt="Logo" className="w-10 h-10" />
+            </div> */}
+            <span className="text-xl font-bold text-tertiary-dark">Selam Holiday</span>
           </Link>
           
           {/* Desktop Navigation */}
@@ -42,9 +36,6 @@ const Navbar = () => {
                 <Link to="/destination" className="text-tertiary-dark font-medium hover:text-primary transition-colors">DESTINATION</Link>
               </li>
               <li>
-                <Link to="/pages" className="text-tertiary-dark font-medium hover:text-primary transition-colors">PAGES</Link>
-              </li>
-              <li>
                 <Link to="/contact" className="text-tertiary-dark font-medium hover:text-primary transition-colors">CONTACT</Link>
               </li>
             </ul>
@@ -54,7 +45,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center">
             <div className="text-right">
               <p className="text-xs text-primary">To More Inquiry</p>
-              <p className="text-sm font-semibold">+990-737 621 432</p>
+              <p className="text-sm font-semibold">+250 785 713 489</p>
             </div>
             <div className="ml-2 text-primary bg-green-100 p-2 rounded-full">
               <Phone size={20} />

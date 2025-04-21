@@ -4,7 +4,7 @@ import { Search } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="relative bg-cover bg-center h-[600px] text-white" style={{ backgroundImage: "url('/lovable-uploads/82454923-5e39-44d2-96b9-65c4c162655c.png')" }}>
+    <section className="relative bg-cover bg-center h-[600px] text-white" style={{ backgroundImage: "url('/Hello.jpg')" }}>
       {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       
@@ -36,7 +36,7 @@ const HeroSection = () => {
       </div>
       
       {/* Search Form */}
-      <div className="absolute bottom-0 left-0 right-0 transform translate-y-1/2 px-4">
+      <div className="absolute bottom-0 left-0 right-0 transform translate-y-1/2 ">
         <div className="container-custom">
           <div className="bg-white rounded-lg shadow-lg p-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
