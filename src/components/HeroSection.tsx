@@ -9,11 +9,18 @@ const HeroSection = () => {
   const [duration, setDuration] = useState("");
 
   const handleSearch = () => {
+    if (!location && !tourType && !month && !duration) {
+      alert("Please select at least one filter to search.");
+      return;
+    }
+
     // Log the selected filter values
     console.log({ location, tourType, month, duration });
     // Here you can add actual search/filter functionality later
     alert(
-      `Searching for tours with:\nLocation: ${location}\nTour Type: ${tourType}\nMonth: ${month}\nDuration: ${duration}`
+      `Searching for tours with:\nLocation: ${location || "Any"}\nTour Type: ${
+        tourType || "Any"
+      }\nMonth: ${month || "Any"}\nDuration: ${duration || "Any"}`
     );
   };
 
@@ -56,7 +63,10 @@ const HeroSection = () => {
           </div>
 
           {/* Moved "Book A Trip" button here under content */}
-          <button className="btn-primary w-fit mb-40" onClick={() => alert('Booking a trip!')}>
+          <button
+            className="btn-primary w-fit mb-20"
+            onClick={() => alert("Booking a trip!")}
+          >
             Book A Trip
           </button>
         </div>
@@ -79,7 +89,7 @@ const HeroSection = () => {
                     id="location"
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
-                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-white text-black"
                   >
                     <option value="">Select a location</option>
                     <option value="rwanda">Rwanda</option>
@@ -110,7 +120,7 @@ const HeroSection = () => {
                     id="tour-type"
                     value={tourType}
                     onChange={(e) => setTourType(e.target.value)}
-                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-white text-black"
                   >
                     <option value="">Select tour type</option>
                     <option value="gorilla">Gorilla Trekking</option>
@@ -137,7 +147,7 @@ const HeroSection = () => {
                     id="month"
                     value={month}
                     onChange={(e) => setMonth(e.target.value)}
-                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-white text-black"
                   >
                     <option value="">Select a month</option>
                     <option value="january">January</option>
@@ -171,7 +181,7 @@ const HeroSection = () => {
                     id="duration"
                     value={duration}
                     onChange={(e) => setDuration(e.target.value)}
-                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-white text-black"
                   >
                     <option value="">Select duration</option>
                     <option value="1">1 day</option>
@@ -204,3 +214,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
