@@ -9,8 +9,12 @@ const HeroSection = () => {
   const [duration, setDuration] = useState("");
 
   const handleSearch = () => {
-    // For now just log the values. This can be extended to trigger actual search/filter.
+    // Log the selected filter values
     console.log({ location, tourType, month, duration });
+    // Here you can add actual search/filter functionality later
+    alert(
+      `Searching for tours with:\nLocation: ${location}\nTour Type: ${tourType}\nMonth: ${month}\nDuration: ${duration}`
+    );
   };
 
   return (
@@ -51,8 +55,8 @@ const HeroSection = () => {
             </span>
           </div>
 
-          {/* Move "Book A Trip" button up here */}
-          <button className="btn-primary w-fit mb-10">
+          {/* Moved "Book A Trip" button here under content */}
+          <button className="btn-primary w-fit mb-10" onClick={() => alert('Booking a trip!')}>
             Book A Trip
           </button>
         </div>
@@ -200,4 +204,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
