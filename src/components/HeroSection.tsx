@@ -4,7 +4,7 @@ import { Search } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="relative bg-cover bg-center h-[600px] text-white" style={{ backgroundImage: "url('/Hello.jpg')" }}>
+    <section className="relative bg-cover bg-center h-[600px] text-white" style={{ backgroundImage: "url('/image (12).png')" }}>
       {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       

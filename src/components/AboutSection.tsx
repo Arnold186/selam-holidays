@@ -50,7 +50,7 @@ const AboutSection = () => {
           <div className="md:w-1/2 grid grid-cols-12 gap-4">
             <div className="col-span-7">
               <img 
-                src="/Hello.jpg" 
+                src="/image.png" 
                 alt="Beautiful resort with pool" 
                 className="w-full h-full object-cover rounded-lg"
               />
@@ -59,7 +59,7 @@ const AboutSection = () => {
             <div className="col-span-5 grid gap-4">
               <div>
                 <img 
-                  src="/Hello.jpg" 
+                  src="/image (3).png" 
                   alt="Desert travel adventure" 
                   className="w-full h-full object-cover rounded-lg"
                 />

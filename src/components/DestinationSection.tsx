@@ -5,15 +5,15 @@ import { ArrowRight } from "lucide-react";
 const destinations = [
   {
     name: "Rwanda",
-    image: "https://images.unsplash.com/photo-1601211994000-d47c02688ebe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+    image: "Rwanda.jpg",
   },
   {
     name: "Uganda",
-    image: "https://images.unsplash.com/photo-1545212590-1761479b8b9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+    image: "Uganda.png",
   },
   {
     name: "Kenya",
-    image: "https://images.unsplash.com/photo-1518550475464-99b1438b6b0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+    image: "Nairobi.jpg",
   },
   {
     name: "Tanzania",
@@ -21,7 +21,7 @@ const destinations = [
   },
   {
     name: "Dubai",
-    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+    image: "Dubai.jpeg",
   },
 ];
 
