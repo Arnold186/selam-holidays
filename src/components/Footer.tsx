@@ -13,10 +13,10 @@ const Footer = () => {
             <div className="flex items-center mb-6">
               <div className="text-primary mr-2">
               <div className="text-primary mr-2">
-              {/* <img src="/selam LOGO (2).png" alt="Logo" className="w-10 h-10" /> */}
+              <img src="/selam LOGO (2).png" alt="Logo" className="w-50 h-10" />
             </div>
               </div>
-              <span className="text-xl font-bold">Selam Holiday</span>
+              {/* <span className="text-xl font-bold">Selam Holiday</span> */}
             </div>
             
             <h3 className="text-lg font-semibold mb-4">Want To Take Tour Packages?</h3>
@@ -66,15 +66,16 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <Phone size={18} className="mr-3 text-primary mt-1" />
-                <span>+250 785 713 489</span>
+                <span>+256 762 283203</span>
               </li>
               <li className="flex items-start">
                 <Mail size={18} className="mr-3 text-primary mt-1" />
-                <span>info@selam.com</span>
+                <span>selamholidaysmug@gmail.com
+                </span>
               </li>
               <li className="flex items-start">
                 <MapPin size={18} className="mr-3 text-primary mt-1" />
-                <span>Kigali Norrskin House</span>
+                <span>Kampala Cube Building</span>
               </li>
             </ul>
           </div>
@@ -83,7 +84,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-6">We Are Here</h3>
             <p className="text-gray-300 mb-6">
-              Quisque purus augue, facilisi andi neque idont accumsan fingidle massa. Vivamuscol id nibhom condimentum.
+            Come find us in vibrant Uganda! We’re just a visit, call, or click away. At Selam Holidays, we're always ready to guide you on your next adventure with care and attention.
             </p>
             
             <h3 className="text-lg font-semibold mb-4">Payment Partner</h3>

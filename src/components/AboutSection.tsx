@@ -24,7 +24,7 @@ const AboutSection = () => {
                 <div>
                   <h3 className="font-semibold text-lg text-tertiary-dark mb-2">Who We Are</h3>
                   <p className="text-tertiary">
-                    Selam Holidays is a Rwanda-based travel and tour company dedicated to helping you discover the beauty of Africa and explore global destinations with ease. Whether you're planning a once-in-a-lifetime gorilla trek, a weekend getaway, or a business trip abroad, our team of experts is here to make your journey smooth and memorable.
+                    Selam Holidays is a Uganda-based travel and tour company dedicated to helping you discover the beauty of Africa and explore global destinations with ease. Whether you're planning a once-in-a-lifetime gorilla trek, a weekend getaway, or a business trip abroad, our team of experts is here to make your journey smooth and memorable.
                   </p>
                 </div>
               </div>
@@ -38,7 +38,7 @@ const AboutSection = () => {
                 <div>
                   <h3 className="font-semibold text-lg text-tertiary-dark mb-2">Our Destinations</h3>
                   <p className="text-tertiary">
-                    Our destinations include Rwanda, Uganda, Kenya, Tanzania, Ethiopia, Dubai, Turkey, Egypt, France, and more. We're constantly expanding our reach to provide you with the best travel experiences around the world.
+                    Our destinations include Uganda, Rwanda, Kenya, Tanzania, Ethiopia, Dubai, Turkey, Egypt, France, and more. We're constantly expanding our reach to provide you with the best travel experiences around the world.
                   </p>
                 </div>
               </div>

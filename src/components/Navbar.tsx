@@ -14,10 +14,10 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            {/* <div className="text-primary mr-2">
-              <img src="/selam LOGO (2).png" alt="Logo" className="w-10 h-10" />
-            </div> */}
-            <span className="text-xl font-bold text-tertiary-dark">Selam Holiday</span>
+            <div className="text-primary mr-2">
+              <img src="/selam LOGO (2).png" alt="Logo" className="w-50 h-10" />
+            </div>
+            {/* <span className="text-xl font-bold text-tertiary-dark">Selam Holiday</span> */}
           </Link>
           
           {/* Desktop Navigation */}
@@ -45,7 +45,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center">
             <div className="text-right">
               <p className="text-xs text-primary">To More Inquiry</p>
-              <p className="text-sm font-semibold">+250 785 713 489</p>
+              <p className="text-sm font-semibold">+256 762 283203</p>
             </div>
             <div className="ml-2 text-primary bg-green-100 p-2 rounded-full">
               <Phone size={20} />

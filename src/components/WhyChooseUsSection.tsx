@@ -63,7 +63,7 @@ const WhyChooseUsSection = () => {
             </div>
             <h3 className="font-semibold text-xl text-tertiary-dark mb-3">Local Expertise</h3>
             <p className="text-tertiary">
-              With deep knowledge of Rwanda and East Africa, our guides and consultants provide authentic insights and access to unforgettable experiences.
+              With deep knowledge of Uganda and East Africa, our guides and consultants provide authentic insights and access to unforgettable experiences.
             </p>
           </div>
           
