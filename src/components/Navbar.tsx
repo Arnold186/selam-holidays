@@ -44,10 +44,11 @@ const Navbar = () => {
           {/* Contact Info */}
           <div className="hidden md:flex items-center">
             <div className="text-right">
-              <p className="text-xs text-primary">To More Inquiry</p>
+            <p className="text-xs text-sky-700">To More Inquiry</p>
+
               <p className="text-sm font-semibold">+256 762 283203</p>
             </div>
-            <div className="ml-2 text-primary bg-green-100 p-2 rounded-full">
+            <div className="ml-2 text-sky-800 bg-sky-100 p-2 rounded-full">
               <Phone size={20} />
             </div>
           </div>
