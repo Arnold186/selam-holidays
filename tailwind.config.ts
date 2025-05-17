@@ -26,9 +26,9 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: '#4CAF50', // Green primary color
-					dark: '#3e8e41',
-					light: '#7fd57f',
+					DEFAULT: '#0369a1', // sky-700
+					dark: '#075985', // sky-800
+					light: '#38bdf8', // sky-400
 					foreground: '#ffffff'
 				},
 				secondary: {
