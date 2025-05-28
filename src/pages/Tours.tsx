@@ -16,7 +16,7 @@ const Tours = () => {
       <ToursHero />
       <TourCategories />
       <FeaturedTours />
-      <TourPricing />
+      {/* <TourPricing /> */}
       <TourTestimonials />
       <NewsletterSection />
       <Footer />

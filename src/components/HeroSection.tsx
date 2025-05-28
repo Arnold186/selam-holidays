@@ -27,7 +27,7 @@ const HeroSection = () => {
 
       <div className="container-custom relative z-10 h-full">
         <div className="flex flex-col justify-center h-full max-w-3xl pt-20">
-          <div className="bg-secondary inline-block px-6 py-2 rounded-full mb-5 w-fit">
+          <div className="bg-sky-700 inline-block px-6 py-2 rounded-full mb-5 w-fit">
             <h2 className="text-white font-medium">Welcome</h2>
           </div>
 

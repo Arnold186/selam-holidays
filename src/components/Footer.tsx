@@ -23,16 +23,16 @@ const Footer = () => {
             <button className="btn-primary mb-6">Book A Tour</button>
             
             <div className="flex space-x-4 mt-4">
-              <a href="#" className="hover:text-primary transition-colors" aria-label="Facebook">
+              <a href="https://web.facebook.com/people/Selam_Travels/100070565520090/?mibextid=LQQJ4d" className="hover:text-primary transition-colors" aria-label="Facebook">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="hover:text-primary transition-colors" aria-label="Twitter">
+              <a href="https://x.com/selam_travels?s=21&t=W5EY4LBYlUE7BDzerRVkYg" className="hover:text-primary transition-colors" aria-label="Twitter">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="hover:text-primary transition-colors" aria-label="Instagram">
+              <a href="https://www.instagram.com/selam_travels?igshid=MzRlODBiNWFlZA%3D%3D" className="hover:text-primary transition-colors" aria-label="Instagram">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="hover:text-primary transition-colors" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/company/selam-travel-solutions/" className="hover:text-primary transition-colors" aria-label="LinkedIn">
                 <Linkedin size={20} />
               </a>
             </div>
@@ -70,12 +70,12 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <Mail size={18} className="mr-3 text-primary mt-1" />
-                <span>selamholidaysmug@gmail.com
+                <span>info@selamtravels.com 
                 </span>
               </li>
               <li className="flex items-start">
                 <MapPin size={18} className="mr-3 text-primary mt-1" />
-                <span>Kampala Cube Building</span>
+                <span>Lloyds Mall, Kampala</span>
               </li>
             </ul>
           </div>
@@ -90,9 +90,9 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Payment Partner</h3>
             <div className="flex space-x-3">
               <div className="bg-blue-600 text-white rounded px-2 py-1 text-xs font-semibold">VISA</div>
-              <div className="bg-indigo-600 text-white rounded px-2 py-1 text-xs font-semibold">Stripe</div>
+              <div className="bg-indigo-600 text-white rounded px-2 py-1 text-xs font-semibold">AMEX</div>
               <div className="bg-blue-400 text-white rounded px-2 py-1 text-xs font-semibold">PayPal</div>
-              <div className="bg-purple-600 text-white rounded px-2 py-1 text-xs font-semibold">WOO</div>
+              <div className="bg-purple-600 text-white rounded px-2 py-1 text-xs font-semibold">Mastercard</div>
               {/* <div className="bg-red-500 text-white rounded px-2 py-1 text-xs font-semibold">Skrill</div> */}
             </div>
           </div>

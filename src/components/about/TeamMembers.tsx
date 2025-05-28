@@ -8,25 +8,25 @@ const teamMembers = [
     name: "Sarah Johnson",
     position: "Founder & CEO",
     bio: "With over 15 years in the travel industry, Sarah founded Selam Holidays with a vision to showcase African beauty to the world.",
-    image: "/image (1).png",
+    image: "/photo2.jpg",
   },
   {
     name: "David Mutesa",
     position: "Head of Operations",
     bio: "David ensures that every tour runs smoothly, managing our network of guides and partners across East Africa.",
-    image: "/image (2).png",
+    image: "/photo1.jpg",
   },
   {
     name: "Amina Nantaba",
     position: "Customer Experience Manager",
     bio: "Amina's passion for exceptional service ensures every traveler has a memorable and comfortable journey.",
-    image: "/image (3).png",
+    image: "/photo3.jpg",
   },
   {
     name: "Robert Kimbowa",
     position: "Marketing Director",
     bio: "Robert brings global visibility to our local destinations through innovative digital marketing strategies.",
-    image: "/image (4).png",
+    image: "/photo1.jpg",
   },
 ];
 

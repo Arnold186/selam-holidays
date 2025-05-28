@@ -19,7 +19,7 @@ const ContactHero = () => {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <div className="bg-secondary inline-block px-6 py-2 rounded-full mb-3 w-fit">
+            <div className="bg-sky-700 inline-block px-6 py-2 rounded-full mb-3 w-fit">
               <h2 className="text-white font-medium">Contact Us</h2>
             </div>
             
