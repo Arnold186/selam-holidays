@@ -91,7 +91,7 @@ const Footer = () => {
             <div className="flex space-x-3">
               <div className="bg-blue-600 text-white rounded px-2 py-1 text-xs font-semibold">VISA</div>
               <div className="bg-indigo-600 text-white rounded px-2 py-1 text-xs font-semibold">AMEX</div>
-              <div className="bg-blue-400 text-white rounded px-2 py-1 text-xs font-semibold">PayPal</div>
+              {/* <div className="bg-blue-400 text-white rounded px-2 py-1 text-xs font-semibold">PayPal</div> */}
               <div className="bg-purple-600 text-white rounded px-2 py-1 text-xs font-semibold">Mastercard</div>
               {/* <div className="bg-red-500 text-white rounded px-2 py-1 text-xs font-semibold">Skrill</div> */}
             </div>

@@ -37,20 +37,20 @@ const ContactInfo = () => {
             <div>
               <h3 className="font-semibold text-tertiary-dark mb-1">Office Address</h3>
               <p className="text-tertiary">
-                Kampala Cube Building<br />
+                Kampala Lloyds Mall<br />
                 Kampala, Uganda
               </p>
             </div>
           </motion.div>
           
           <motion.div variants={itemVariants} className="flex items-start">
-            <div className="bg-orange-100 p-3 rounded-full mr-4">
-              <Phone size={20} className="text-secondary" />
+            <div className="bg-blue-100 p-3 rounded-full mr-4">
+              <Phone size={20} className="text-sky-700" />
             </div>
             <div>
               <h3 className="font-semibold text-tertiary-dark mb-1">Phone Number</h3>
               <p className="text-tertiary">+256 762 283203</p>
-              <p className="text-tertiary">+256 701 759492</p>
+              <p className="text-tertiary">+250 785 713 489</p>
             </div>
           </motion.div>
           
@@ -60,14 +60,14 @@ const ContactInfo = () => {
             </div>
             <div>
               <h3 className="font-semibold text-tertiary-dark mb-1">Email Address</h3>
+              <p className="text-tertiary">info@selamtravels.com</p>
               <p className="text-tertiary">selamholidaysmug@gmail.com</p>
-              <p className="text-tertiary">bookings@selamholidays.com</p>
             </div>
           </motion.div>
           
           <motion.div variants={itemVariants} className="flex items-start">
-            <div className="bg-orange-100 p-3 rounded-full mr-4">
-              <Clock size={20} className="text-secondary" />
+            <div className="bg-blue-100 p-3 rounded-full mr-4">
+              <Clock size={20} className="text-sky-700" />
             </div>
             <div>
               <h3 className="font-semibold text-tertiary-dark mb-1">Working Hours</h3>
@@ -82,7 +82,7 @@ const ContactInfo = () => {
           <h3 className="font-semibold text-tertiary-dark mb-3">Follow Us</h3>
           <div className="flex space-x-4">
             <motion.a 
-              href="#" 
+              href="https://web.facebook.com/people/Selam_Travels/100070565520090/?mibextid=LQQJ4d" 
               whileHover={{ scale: 1.2, rotate: 5 }}
               className="bg-gray-100 p-3 rounded-full text-primary hover:bg-primary hover:text-white transition-colors"
               aria-label="Facebook"
@@ -90,7 +90,7 @@ const ContactInfo = () => {
               <Facebook size={20} />
             </motion.a>
             <motion.a 
-              href="#" 
+              href="https://x.com/selam_travels?s=21&t=W5EY4LBYlUE7BDzerRVkYg" 
               whileHover={{ scale: 1.2, rotate: 5 }}
               className="bg-gray-100 p-3 rounded-full text-primary hover:bg-primary hover:text-white transition-colors"
               aria-label="Twitter"
@@ -98,7 +98,7 @@ const ContactInfo = () => {
               <Twitter size={20} />
             </motion.a>
             <motion.a 
-              href="#" 
+              href="https://www.instagram.com/selam_travels?igshid=MzRlODBiNWFlZA%3D%3D" 
               whileHover={{ scale: 1.2, rotate: 5 }}
               className="bg-gray-100 p-3 rounded-full text-primary hover:bg-primary hover:text-white transition-colors"
               aria-label="Instagram"
@@ -106,7 +106,7 @@ const ContactInfo = () => {
               <Instagram size={20} />
             </motion.a>
             <motion.a 
-              href="#" 
+              href="https://www.linkedin.com/company/selam-travel-solutions" 
               whileHover={{ scale: 1.2, rotate: 5 }}
               className="bg-gray-100 p-3 rounded-full text-primary hover:bg-primary hover:text-white transition-colors"
               aria-label="LinkedIn"

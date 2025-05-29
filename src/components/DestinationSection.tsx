@@ -97,11 +97,11 @@ const DestinationSection = () => {
             </div>
           </div>
           
-          <div className="rounded-lg bg-orange-50 h-64 flex flex-col items-center justify-center p-6">
+          <div className="rounded-lg bg-sky-50 h-64 flex flex-col items-center justify-center p-6">
             <div className="text-center">
-              <p className="text-secondary font-medium mb-1">View All</p>
+              <p className="text-sky-900 font-medium mb-1">View All</p>
               <h3 className="text-xl font-semibold text-tertiary-dark mb-4">Of Our All Destinations</h3>
-              <button className="btn-secondary">
+              <button className="bg-sky-600 hover:bg-sky-700 text-white px-4 py-2 rounded flex items-center">
                 View All Destinations <ArrowRight size={16} className="ml-2" />
               </button>
             </div>

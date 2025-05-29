@@ -42,7 +42,7 @@ const HeroSection = () => {
 
           <div className="flex flex-wrap gap-3 mb-8">
             <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
-              ✈️ Flight Bookings
+              Flight Bookings
             </span>
             <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
               Custom Tours

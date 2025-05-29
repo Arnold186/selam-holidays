@@ -64,7 +64,7 @@ const AboutSection = () => {
                   className="w-full h-full object-cover rounded-lg"
                 />
               </div>
-              <div className="bg-secondary p-4 rounded-lg text-white text-center flex flex-col justify-center">
+              <div className="bg-sky-700 p-4 rounded-lg text-white text-center flex flex-col justify-center">
                 <span className="text-4xl font-bold">10+</span>
                 <span className="text-sm mt-1">Countries</span>
               </div>
