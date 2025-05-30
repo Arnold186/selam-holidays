@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { FaXTwitter } from "react-icons/fa6";
 
 const ContactInfo = () => {
   const containerVariants = {
@@ -95,7 +96,8 @@ const ContactInfo = () => {
               className="bg-gray-100 p-3 rounded-full text-primary hover:bg-primary hover:text-white transition-colors"
               aria-label="Twitter"
             >
-              <Twitter size={20} />
+              <FaXTwitter size={20}/>
+              {/* <Twitter size={20} /> */}
             </motion.a>
             <motion.a 
               href="https://www.instagram.com/selam_travels?igshid=MzRlODBiNWFlZA%3D%3D" 
