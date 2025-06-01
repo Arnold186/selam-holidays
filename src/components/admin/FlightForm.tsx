@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -103,6 +102,10 @@ const FlightForm = ({ onSuccess, flight }: FlightFormProps) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
+  const handleStopoverChange = (checked: boolean | "indeterminate") => {
+    setHasStopover(checked === true);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -188,7 +191,7 @@ const FlightForm = ({ onSuccess, flight }: FlightFormProps) => {
               <Checkbox
                 id="has_stopover"
                 checked={hasStopover}
-                onCheckedChange={setHasStopover}
+                onCheckedChange={handleStopoverChange}
               />
               <Label htmlFor="has_stopover">This flight has a stopover</Label>
             </div>

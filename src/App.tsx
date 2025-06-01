@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Tours from "./pages/Tours";
+import Flights from "./pages/Flights";
+import Admin from "./pages/Admin";
 import Destination from "./pages/Destination";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";

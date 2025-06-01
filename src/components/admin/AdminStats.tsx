@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
@@ -18,7 +17,7 @@ const AdminStats = () => {
 
       const totalFlights = flights.length;
       const activeFlights = flights.filter(f => f.status === 'active').length;
-      const totalRevenue = flights.reduce((sum, f) => sum + parseFloat(f.price), 0);
+      const totalRevenue = flights.reduce((sum, f) => sum + parseFloat(f.price.toString()), 0);
       const totalSeats = flights.reduce((sum, f) => sum + f.available_seats, 0);
 
       return {
