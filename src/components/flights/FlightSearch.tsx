@@ -19,7 +19,19 @@ const FlightSearch = ({ onSearch }: FlightSearchProps) => {
   });
 
   const handleSearch = () => {
+    console.log('Search filters:', searchFilters);
     onSearch?.(searchFilters);
+  };
+
+  const handleReset = () => {
+    const resetFilters = {
+      departure: '',
+      arrival: '',
+      date: '',
+      passengers: 1
+    };
+    setSearchFilters(resetFilters);
+    onSearch?.(resetFilters);
   };
 
   return (
@@ -30,7 +42,7 @@ const FlightSearch = ({ onSearch }: FlightSearchProps) => {
       className="bg-white rounded-lg shadow-lg p-6 mb-8"
     >
       <h2 className="text-2xl font-bold text-tertiary-dark mb-6">Search Flights</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
         <div>
           <Label htmlFor="departure" className="flex items-center gap-2 mb-2">
             <MapPin size={16} />
@@ -78,13 +90,18 @@ const FlightSearch = ({ onSearch }: FlightSearchProps) => {
             min="1"
             max="10"
             value={searchFilters.passengers}
-            onChange={(e) => setSearchFilters(prev => ({ ...prev, passengers: parseInt(e.target.value) }))}
+            onChange={(e) => setSearchFilters(prev => ({ ...prev, passengers: parseInt(e.target.value) || 1 }))}
           />
         </div>
         <div className="flex items-end">
           <Button onClick={handleSearch} className="w-full bg-primary hover:bg-primary/90">
             <Search size={16} className="mr-2" />
             Search
+          </Button>
+        </div>
+        <div className="flex items-end">
+          <Button onClick={handleReset} variant="outline" className="w-full">
+            Clear
           </Button>
         </div>
       </div>

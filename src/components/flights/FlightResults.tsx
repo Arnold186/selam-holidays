@@ -6,15 +6,40 @@ import { supabase } from "@/integrations/supabase/client";
 import FlightCard from "./FlightCard";
 import { Loader2 } from "lucide-react";
 
-const FlightResults = () => {
-  const { data: flights, isLoading, error } = useQuery({
-    queryKey: ['flights'],
+interface FlightResultsProps {
+  searchFilters?: {
+    departure: string;
+    arrival: string;
+    date: string;
+    passengers: number;
+  };
+}
+
+const FlightResults = ({ searchFilters }: FlightResultsProps) => {
+  const { data: flights, isLoading, error, refetch } = useQuery({
+    queryKey: ['flights', searchFilters],
     queryFn: async () => {
-      const { data, error } = await supabase
+      let query = supabase
         .from('flights')
         .select('*')
         .eq('status', 'active')
         .order('flight_date', { ascending: true });
+
+      // Apply filters if provided
+      if (searchFilters?.departure) {
+        query = query.ilike('departure_airport_name', `%${searchFilters.departure}%`);
+      }
+      if (searchFilters?.arrival) {
+        query = query.ilike('arrival_airport_name', `%${searchFilters.arrival}%`);
+      }
+      if (searchFilters?.date) {
+        query = query.eq('flight_date', searchFilters.date);
+      }
+      if (searchFilters?.passengers) {
+        query = query.gte('available_seats', searchFilters.passengers);
+      }
+      
+      const { data, error } = await query;
       
       if (error) throw error;
       return data;
@@ -33,8 +58,8 @@ const FlightResults = () => {
           table: 'flights'
         },
         () => {
-          // Refetch data when changes occur
-          window.location.reload();
+          console.log('Flight data changed, refetching...');
+          refetch();
         }
       )
       .subscribe();
@@ -42,7 +67,7 @@ const FlightResults = () => {
     return () => {
       supabase.removeChannel(channel);
     };
-  }, []);
+  }, [refetch]);
 
   if (isLoading) {
     return (
@@ -57,6 +82,12 @@ const FlightResults = () => {
     return (
       <div className="text-center py-16">
         <p className="text-red-600">Error loading flights. Please try again.</p>
+        <button 
+          onClick={() => refetch()} 
+          className="mt-2 px-4 py-2 bg-primary text-white rounded hover:bg-primary/90"
+        >
+          Retry
+        </button>
       </div>
     );
   }
@@ -64,7 +95,12 @@ const FlightResults = () => {
   if (!flights || flights.length === 0) {
     return (
       <div className="text-center py-16">
-        <p className="text-tertiary text-lg">No flights available at the moment.</p>
+        <p className="text-tertiary text-lg">
+          {searchFilters && (searchFilters.departure || searchFilters.arrival || searchFilters.date) 
+            ? "No flights found matching your search criteria." 
+            : "No flights available at the moment."
+          }
+        </p>
       </div>
     );
   }

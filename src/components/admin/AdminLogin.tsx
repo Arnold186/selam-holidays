@@ -20,18 +20,52 @@ const AdminLogin = () => {
     setLoading(true);
 
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      // First try to sign in
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
 
-      if (error) throw error;
+      if (error) {
+        // If sign in fails and it's the admin email, try to sign up
+        if (email === "eloimuvunyi@gmail.com" && error.message.includes("Invalid login credentials")) {
+          const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
+            email,
+            password,
+          });
 
-      toast({
-        title: "Login successful",
-        description: "Welcome to the admin dashboard",
-      });
-    } catch (error) {
+          if (signUpError) throw signUpError;
+
+          if (signUpData.user) {
+            // Insert admin user record
+            const { error: adminError } = await supabase
+              .from('admin_users')
+              .insert([
+                {
+                  user_id: signUpData.user.id,
+                  email: email
+                }
+              ]);
+
+            if (adminError) {
+              console.error("Error creating admin record:", adminError);
+            }
+
+            toast({
+              title: "Admin account created",
+              description: "Please check your email to verify your account, then try logging in again.",
+            });
+          }
+        } else {
+          throw error;
+        }
+      } else {
+        toast({
+          title: "Login successful",
+          description: "Welcome to the admin dashboard",
+        });
+      }
+    } catch (error: any) {
       toast({
         title: "Login failed",
         description: error.message,
@@ -55,6 +89,9 @@ const AdminLogin = () => {
               <Lock size={32} className="text-primary" />
             </div>
             <CardTitle className="text-2xl font-bold">Admin Login</CardTitle>
+            <p className="text-sm text-gray-600 mt-2">
+              Use: eloimuvunyi@gmail.com / Umuhire@123
+            </p>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-4">
