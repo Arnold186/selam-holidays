@@ -38,7 +38,7 @@ const AboutSection = () => {
                 <div>
                   <h3 className="font-semibold text-lg text-tertiary-dark mb-2">Our Destinations</h3>
                   <p className="text-tertiary">
-                    Our destinations include Uganda, Rwanda, Kenya, Tanzania, Ethiopia, Dubai, Turkey, Egypt, France, and more. We're constantly expanding our reach to provide you with the best travel experiences around the world.
+                    Our destinations include Uganda, Rwanda, Kenya, Tanzania, Middle East, Europe, Southeast Asia, and more. We're constantly expanding our reach to provide you with the best travel experiences around the world.
                   </p>
                 </div>
               </div>

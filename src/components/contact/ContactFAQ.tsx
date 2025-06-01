@@ -15,16 +15,16 @@ const faqs = [
   },
   {
     question: "What payment methods do you accept?",
-    answer: "We accept various payment methods including credit/debit cards (Visa, MasterCard), bank transfers, PayPal, and mobile money for local clients. All payments are secure and processed through trusted payment gateways."
+    answer: "We accept various payment methods including credit/debit cards (Visa, MasterCard), bank transfers, and mobile money for local clients. All payments are secure and processed through trusted payment gateways."
   },
   {
     question: "Can I customize the itinerary for my tour?",
     answer: "Absolutely! We specialize in creating customized itineraries based on your interests, preferences, and budget. Our experienced travel consultants will work with you to design the perfect trip."
   },
-  {
-    question: "What is your cancellation policy?",
-    answer: "Our cancellation policy varies depending on the tour package and timing. Generally, cancellations made 30 days or more before departure receive a full refund minus a small administrative fee. Please check the specific terms for your tour or contact us for details."
-  },
+  // {
+  //   question: "What is your cancellation policy?",
+  //   answer: "Our cancellation policy varies depending on the tour package and timing. Generally, cancellations made 30 days or more before departure receive a full refund minus a small administrative fee. Please check the specific terms for your tour or contact us for details."
+  // },
   {
     question: "Do you arrange airport transfers?",
     answer: "Yes, we provide airport transfers for all our tour packages. Our driver will meet you at the airport with a signboard and assist you with your luggage to ensure a smooth start to your journey."
