@@ -9,7 +9,81 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      admin_users: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      flights: {
+        Row: {
+          arrival_airport_name: string
+          arrival_time: string
+          available_seats: number
+          created_at: string
+          departure_airport_name: string
+          departure_time: string
+          flight_date: string
+          id: string
+          plane_name: string
+          price: number
+          status: Database["public"]["Enums"]["flight_status"]
+          stopover_airport_name: string | null
+          stopover_arrival_time: string | null
+          stopover_departure_time: string | null
+          updated_at: string
+        }
+        Insert: {
+          arrival_airport_name: string
+          arrival_time: string
+          available_seats?: number
+          created_at?: string
+          departure_airport_name: string
+          departure_time: string
+          flight_date: string
+          id?: string
+          plane_name: string
+          price: number
+          status?: Database["public"]["Enums"]["flight_status"]
+          stopover_airport_name?: string | null
+          stopover_arrival_time?: string | null
+          stopover_departure_time?: string | null
+          updated_at?: string
+        }
+        Update: {
+          arrival_airport_name?: string
+          arrival_time?: string
+          available_seats?: number
+          created_at?: string
+          departure_airport_name?: string
+          departure_time?: string
+          flight_date?: string
+          id?: string
+          plane_name?: string
+          price?: number
+          status?: Database["public"]["Enums"]["flight_status"]
+          stopover_airport_name?: string | null
+          stopover_arrival_time?: string | null
+          stopover_departure_time?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -18,7 +92,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      flight_status: "active" | "cancelled" | "delayed"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -133,6 +207,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      flight_status: ["active", "cancelled", "delayed"],
+    },
   },
 } as const
