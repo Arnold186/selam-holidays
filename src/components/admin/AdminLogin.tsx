@@ -9,7 +9,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Lock, Mail } from "lucide-react";
 
-const AdminLogin = () => {
+interface AdminLoginProps {
+  onLoginSuccess?: () => void;
+}
+
+const AdminLogin = ({ onLoginSuccess }: AdminLoginProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -64,6 +68,11 @@ const AdminLogin = () => {
           title: "Login successful",
           description: "Welcome to the admin dashboard",
         });
+        
+        // Call the success callback to trigger admin status refetch
+        if (onLoginSuccess) {
+          onLoginSuccess();
+        }
       }
     } catch (error: any) {
       toast({

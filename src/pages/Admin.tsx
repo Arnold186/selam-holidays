@@ -9,7 +9,7 @@ const Admin = () => {
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  const { data: isAdmin, isLoading: adminCheckLoading } = useQuery({
+  const { data: isAdmin, isLoading: adminCheckLoading, refetch: refetchAdminStatus } = useQuery({
     queryKey: ['admin-check', user?.id],
     queryFn: async () => {
       if (!user) return false;
@@ -52,10 +52,17 @@ const Admin = () => {
       console.log('Auth state changed:', _event, session);
       setUser(session?.user ?? null);
       setLoading(false);
+      
+      // Refetch admin status when user changes
+      if (session?.user) {
+        setTimeout(() => {
+          refetchAdminStatus();
+        }, 500);
+      }
     });
 
     return () => subscription.unsubscribe();
-  }, []);
+  }, [refetchAdminStatus]);
 
   if (loading || adminCheckLoading) {
     return (
@@ -69,7 +76,7 @@ const Admin = () => {
   }
 
   if (!user || !isAdmin) {
-    return <AdminLogin />;
+    return <AdminLogin onLoginSuccess={() => refetchAdminStatus()} />;
   }
 
   return <AdminDashboard />;
