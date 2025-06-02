@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import AdminLogin from "@/components/admin/AdminLogin";
@@ -7,8 +7,9 @@ import AdminDashboard from "@/components/admin/AdminDashboard";
 
 const Admin = () => {
   const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
-  const { data: isAdmin, isLoading } = useQuery({
+  const { data: isAdmin, isLoading: adminCheckLoading } = useQuery({
     queryKey: ['admin-check', user?.id],
     queryFn: async () => {
       if (!user) return false;
@@ -32,21 +33,31 @@ const Admin = () => {
     enabled: !!user
   });
 
-  React.useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      console.log('Current session:', session);
-      setUser(session?.user ?? null);
-    });
+  useEffect(() => {
+    const initializeAuth = async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        console.log('Initial session:', session);
+        setUser(session?.user ?? null);
+      } catch (error) {
+        console.error('Error getting session:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    initializeAuth();
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       console.log('Auth state changed:', _event, session);
       setUser(session?.user ?? null);
+      setLoading(false);
     });
 
     return () => subscription.unsubscribe();
   }, []);
 
-  if (isLoading) {
+  if (loading || adminCheckLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
