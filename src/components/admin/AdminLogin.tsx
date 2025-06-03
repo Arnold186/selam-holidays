@@ -24,32 +24,43 @@ const AdminLogin = ({ onLoginSuccess }: AdminLoginProps) => {
     setLoading(true);
 
     try {
-      // First try to sign in
+      console.log('Attempting login with email:', email);
+      
+      // Try to sign in with the provided credentials
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
 
       if (error) {
-        // If sign in fails and it's the admin email, try to sign up
+        console.error('Login error:', error);
+        
+        // If it's the admin email and credentials are invalid, try to sign up
         if (email === "eloimuvunyi@gmail.com" && error.message.includes("Invalid login credentials")) {
+          console.log('Admin email detected, attempting signup...');
+          
           const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
             email,
             password,
           });
 
-          if (signUpError) throw signUpError;
+          if (signUpError) {
+            console.error('Signup error:', signUpError);
+            throw signUpError;
+          }
 
           if (signUpData.user) {
-            // Insert admin user record
+            console.log('Signup successful, creating admin record...');
+            
+            // Ensure admin user record exists
             const { error: adminError } = await supabase
               .from('admin_users')
-              .insert([
+              .upsert([
                 {
                   user_id: signUpData.user.id,
                   email: email
                 }
-              ]);
+              ], { onConflict: 'user_id' });
 
             if (adminError) {
               console.error("Error creating admin record:", adminError);
@@ -63,7 +74,29 @@ const AdminLogin = ({ onLoginSuccess }: AdminLoginProps) => {
         } else {
           throw error;
         }
-      } else {
+      } else if (data.user) {
+        console.log('Login successful for user:', data.user.id);
+        
+        // For the admin email, ensure admin record exists
+        if (email === "eloimuvunyi@gmail.com") {
+          console.log('Admin email detected, ensuring admin record exists...');
+          
+          const { error: adminError } = await supabase
+            .from('admin_users')
+            .upsert([
+              {
+                user_id: data.user.id,
+                email: email
+              }
+            ], { onConflict: 'user_id' });
+
+          if (adminError) {
+            console.error("Error ensuring admin record:", adminError);
+          } else {
+            console.log('Admin record ensured for user:', data.user.id);
+          }
+        }
+
         toast({
           title: "Login successful",
           description: "Welcome to the admin dashboard",
@@ -71,10 +104,12 @@ const AdminLogin = ({ onLoginSuccess }: AdminLoginProps) => {
         
         // Call the success callback to trigger admin status refetch
         if (onLoginSuccess) {
+          console.log('Calling onLoginSuccess callback...');
           onLoginSuccess();
         }
       }
     } catch (error: any) {
+      console.error('Login process error:', error);
       toast({
         title: "Login failed",
         description: error.message,
