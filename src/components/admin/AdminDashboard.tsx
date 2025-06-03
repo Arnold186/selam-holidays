@@ -1,12 +1,12 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { LogOut, Plane, Plus, BarChart3 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import FlightForm from "./FlightForm";
 import FlightsList from "./FlightsList";
 import AdminStats from "./AdminStats";
@@ -14,6 +14,7 @@ import AdminStats from "./AdminStats";
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("overview");
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
@@ -21,6 +22,7 @@ const AdminDashboard = () => {
       title: "Logged out",
       description: "You have been logged out successfully",
     });
+    navigate('/auth');
   };
 
   return (
@@ -33,7 +35,7 @@ const AdminDashboard = () => {
               <div className="bg-primary/10 p-2 rounded-full">
                 <Plane size={24} className="text-primary" />
               </div>
-              <h1 className="text-2xl font-bold text-tertiary-dark">Flight Admin</h1>
+              <h1 className="text-2xl font-bold text-tertiary-dark">Flight Management</h1>
             </div>
             <Button variant="outline" onClick={handleLogout}>
               <LogOut size={16} className="mr-2" />

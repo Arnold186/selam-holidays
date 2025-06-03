@@ -9,6 +9,7 @@ import About from "./pages/About";
 import Tours from "./pages/Tours";
 import Flights from "./pages/Flights";
 import Admin from "./pages/Admin";
+import Auth from "./pages/Auth";
 import Destination from "./pages/Destination";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/flights" element={<Flights />} />
           <Route path="/destination" element={<Destination />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/auth" element={<Auth />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
