@@ -54,18 +54,20 @@ const Admin = () => {
 
     initializeAuth();
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
       console.log('Auth state changed:', _event, session?.user?.id);
       setUser(session?.user ?? null);
       setLoading(false);
       
-      // Refetch admin status when user changes
-      if (session?.user) {
-        console.log('User authenticated, will refetch admin status...');
+      // If user signed out or signed in, refetch admin status
+      if (_event === 'SIGNED_OUT') {
+        console.log('User signed out, clearing admin status');
+      } else if (_event === 'SIGNED_IN' && session?.user) {
+        console.log('User signed in, will refetch admin status...');
         setTimeout(() => {
           console.log('Refetching admin status...');
           refetchAdminStatus();
-        }, 1000); // Increased delay to ensure database consistency
+        }, 500);
       }
     });
 
@@ -86,13 +88,14 @@ const Admin = () => {
         <div className="text-center">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary mx-auto"></div>
           <p className="mt-4 text-tertiary">
-            {loading ? 'Loading...' : 'Checking admin access...'}
+            {loading ? 'Loading...' : 'Verifying admin access...'}
           </p>
         </div>
       </div>
     );
   }
 
+  // Show login form if no user or user is not an admin
   if (!user || !isAdmin) {
     console.log('Showing login form - User:', !!user, 'IsAdmin:', isAdmin);
     return <AdminLogin onLoginSuccess={() => {

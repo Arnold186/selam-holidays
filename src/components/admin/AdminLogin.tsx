@@ -24,7 +24,7 @@ const AdminLogin = ({ onLoginSuccess }: AdminLoginProps) => {
     setLoading(true);
 
     try {
-      console.log('Attempting login with email:', email);
+      console.log('Attempting admin login with email:', email);
       
       // Try to sign in with the provided credentials
       const { data, error } = await supabase.auth.signInWithPassword({
@@ -34,69 +34,40 @@ const AdminLogin = ({ onLoginSuccess }: AdminLoginProps) => {
 
       if (error) {
         console.error('Login error:', error);
-        
-        // If it's the admin email and credentials are invalid, try to sign up
-        if (email === "eloimuvunyi@gmail.com" && error.message.includes("Invalid login credentials")) {
-          console.log('Admin email detected, attempting signup...');
-          
-          const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
-            email,
-            password,
-          });
+        toast({
+          title: "Login failed",
+          description: "Invalid email or password. Only authorized administrators can access this area.",
+          variant: "destructive",
+        });
+        return;
+      }
 
-          if (signUpError) {
-            console.error('Signup error:', signUpError);
-            throw signUpError;
-          }
-
-          if (signUpData.user) {
-            console.log('Signup successful, creating admin record...');
-            
-            // Ensure admin user record exists
-            const { error: adminError } = await supabase
-              .from('admin_users')
-              .upsert([
-                {
-                  user_id: signUpData.user.id,
-                  email: email
-                }
-              ], { onConflict: 'user_id' });
-
-            if (adminError) {
-              console.error("Error creating admin record:", adminError);
-            }
-
-            toast({
-              title: "Admin account created",
-              description: "Please check your email to verify your account, then try logging in again.",
-            });
-          }
-        } else {
-          throw error;
-        }
-      } else if (data.user) {
+      if (data.user) {
         console.log('Login successful for user:', data.user.id);
         
-        // For the admin email, ensure admin record exists
-        if (email === "eloimuvunyi@gmail.com") {
-          console.log('Admin email detected, ensuring admin record exists...');
-          
-          const { error: adminError } = await supabase
-            .from('admin_users')
-            .upsert([
-              {
-                user_id: data.user.id,
-                email: email
-              }
-            ], { onConflict: 'user_id' });
+        // Check if this user is actually an admin
+        const { data: adminData, error: adminError } = await supabase
+          .from('admin_users')
+          .select('id, email')
+          .eq('user_id', data.user.id)
+          .single();
 
-          if (adminError) {
-            console.error("Error ensuring admin record:", adminError);
-          } else {
-            console.log('Admin record ensured for user:', data.user.id);
-          }
+        if (adminError || !adminData) {
+          console.error('User is not an admin:', adminError);
+          
+          // Sign out the user since they're not an admin
+          await supabase.auth.signOut();
+          
+          toast({
+            title: "Access denied",
+            description: "You do not have administrator privileges to access this area.",
+            variant: "destructive",
+          });
+          return;
         }
 
+        console.log('Admin access confirmed for user:', data.user.id);
+        
         toast({
           title: "Login successful",
           description: "Welcome to the admin dashboard",
@@ -112,7 +83,7 @@ const AdminLogin = ({ onLoginSuccess }: AdminLoginProps) => {
       console.error('Login process error:', error);
       toast({
         title: "Login failed",
-        description: error.message,
+        description: "An error occurred during login. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -132,9 +103,9 @@ const AdminLogin = ({ onLoginSuccess }: AdminLoginProps) => {
             <div className="bg-primary/10 p-3 rounded-full w-fit mx-auto mb-4">
               <Lock size={32} className="text-primary" />
             </div>
-            <CardTitle className="text-2xl font-bold">Admin Login</CardTitle>
+            <CardTitle className="text-2xl font-bold">Admin Access</CardTitle>
             <p className="text-sm text-gray-600 mt-2">
-              Use: eloimuvunyi@gmail.com / Umuhire@123
+              Restricted to authorized administrators only
             </p>
           </CardHeader>
           <CardContent>
@@ -172,7 +143,7 @@ const AdminLogin = ({ onLoginSuccess }: AdminLoginProps) => {
                 className="w-full bg-primary hover:bg-primary/90"
                 disabled={loading}
               >
-                {loading ? "Signing in..." : "Sign In"}
+                {loading ? "Verifying access..." : "Sign In"}
               </Button>
             </form>
           </CardContent>
