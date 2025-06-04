@@ -5,11 +5,12 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
-import { LogOut, Plane, Plus, BarChart3 } from "lucide-react";
+import { LogOut, Plane, Plus, BarChart3, Calendar } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import FlightForm from "./FlightForm";
 import FlightsList from "./FlightsList";
 import AdminStats from "./AdminStats";
+import BookingsList from "./BookingsList";
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("overview");
@@ -48,7 +49,7 @@ const AdminDashboard = () => {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="grid w-full grid-cols-3 mb-8">
+          <TabsList className="grid w-full grid-cols-4 mb-8">
             <TabsTrigger value="overview" className="flex items-center gap-2">
               <BarChart3 size={16} />
               Overview
@@ -56,6 +57,10 @@ const AdminDashboard = () => {
             <TabsTrigger value="flights" className="flex items-center gap-2">
               <Plane size={16} />
               Manage Flights
+            </TabsTrigger>
+            <TabsTrigger value="bookings" className="flex items-center gap-2">
+              <Calendar size={16} />
+              Bookings
             </TabsTrigger>
             <TabsTrigger value="add-flight" className="flex items-center gap-2">
               <Plus size={16} />
@@ -69,6 +74,10 @@ const AdminDashboard = () => {
 
           <TabsContent value="flights">
             <FlightsList />
+          </TabsContent>
+
+          <TabsContent value="bookings">
+            <BookingsList />
           </TabsContent>
 
           <TabsContent value="add-flight">
