@@ -33,53 +33,98 @@ export type Database = {
       flights: {
         Row: {
           arrival_airport_name: string
+          arrival_date: string
           arrival_time: string
           available_seats: number
           created_at: string
           departure_airport_name: string
+          departure_date: string
           departure_time: string
           flight_date: string
           id: string
           plane_name: string
           price: number
           status: Database["public"]["Enums"]["flight_status"]
-          stopover_airport_name: string | null
-          stopover_arrival_time: string | null
-          stopover_departure_time: string | null
+          stopover_1_airport_name: string | null
+          stopover_1_arrival_time: string | null
+          stopover_1_date: string | null
+          stopover_1_departure_time: string | null
+          stopover_2_airport_name: string | null
+          stopover_2_arrival_time: string | null
+          stopover_2_date: string | null
+          stopover_2_departure_time: string | null
+          stopover_3_airport_name: string | null
+          stopover_3_arrival_time: string | null
+          stopover_3_date: string | null
+          stopover_3_departure_time: string | null
+          stopover_4_airport_name: string | null
+          stopover_4_arrival_time: string | null
+          stopover_4_date: string | null
+          stopover_4_departure_time: string | null
           updated_at: string
         }
         Insert: {
           arrival_airport_name: string
+          arrival_date: string
           arrival_time: string
           available_seats?: number
           created_at?: string
           departure_airport_name: string
+          departure_date: string
           departure_time: string
           flight_date: string
           id?: string
           plane_name: string
           price: number
           status?: Database["public"]["Enums"]["flight_status"]
-          stopover_airport_name?: string | null
-          stopover_arrival_time?: string | null
-          stopover_departure_time?: string | null
+          stopover_1_airport_name?: string | null
+          stopover_1_arrival_time?: string | null
+          stopover_1_date?: string | null
+          stopover_1_departure_time?: string | null
+          stopover_2_airport_name?: string | null
+          stopover_2_arrival_time?: string | null
+          stopover_2_date?: string | null
+          stopover_2_departure_time?: string | null
+          stopover_3_airport_name?: string | null
+          stopover_3_arrival_time?: string | null
+          stopover_3_date?: string | null
+          stopover_3_departure_time?: string | null
+          stopover_4_airport_name?: string | null
+          stopover_4_arrival_time?: string | null
+          stopover_4_date?: string | null
+          stopover_4_departure_time?: string | null
           updated_at?: string
         }
         Update: {
           arrival_airport_name?: string
+          arrival_date?: string
           arrival_time?: string
           available_seats?: number
           created_at?: string
           departure_airport_name?: string
+          departure_date?: string
           departure_time?: string
           flight_date?: string
           id?: string
           plane_name?: string
           price?: number
           status?: Database["public"]["Enums"]["flight_status"]
-          stopover_airport_name?: string | null
-          stopover_arrival_time?: string | null
-          stopover_departure_time?: string | null
+          stopover_1_airport_name?: string | null
+          stopover_1_arrival_time?: string | null
+          stopover_1_date?: string | null
+          stopover_1_departure_time?: string | null
+          stopover_2_airport_name?: string | null
+          stopover_2_arrival_time?: string | null
+          stopover_2_date?: string | null
+          stopover_2_departure_time?: string | null
+          stopover_3_airport_name?: string | null
+          stopover_3_arrival_time?: string | null
+          stopover_3_date?: string | null
+          stopover_3_departure_time?: string | null
+          stopover_4_airport_name?: string | null
+          stopover_4_arrival_time?: string | null
+          stopover_4_date?: string | null
+          stopover_4_departure_time?: string | null
           updated_at?: string
         }
         Relationships: []

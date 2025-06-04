@@ -69,6 +69,45 @@ const FlightsList = () => {
     });
   };
 
+  const getActiveStopoverCount = (flight: any) => {
+    if (flight.stopover_4_airport_name) return 4;
+    if (flight.stopover_3_airport_name) return 3;
+    if (flight.stopover_2_airport_name) return 2;
+    if (flight.stopover_1_airport_name) return 1;
+    return 0;
+  };
+
+  const renderStopovers = (flight: any) => {
+    const stopoverCount = getActiveStopoverCount(flight);
+    if (stopoverCount === 0) return null;
+
+    const stopovers = [];
+    for (let i = 1; i <= stopoverCount; i++) {
+      const airportName = flight[`stopover_${i}_airport_name`];
+      const date = flight[`stopover_${i}_date`];
+      const arrivalTime = flight[`stopover_${i}_arrival_time`];
+      const departureTime = flight[`stopover_${i}_departure_time`];
+      
+      if (airportName) {
+        stopovers.push(
+          <div key={i} className="text-sm">
+            <strong>Stopover {i}:</strong> {airportName}
+            {date && <span> on {formatDate(date)}</span>}
+            {arrivalTime && departureTime && (
+              <span> ({formatTime(arrivalTime)} - {formatTime(departureTime)})</span>
+            )}
+          </div>
+        );
+      }
+    }
+    
+    return stopovers.length > 0 ? (
+      <div className="mt-2">
+        {stopovers}
+      </div>
+    ) : null;
+  };
+
   if (editingFlight) {
     return (
       <div>
@@ -124,28 +163,28 @@ const FlightsList = () => {
                           {flight.status}
                         </Badge>
                       </div>
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
                         <div>
-                          <strong>Date:</strong> {formatDate(flight.flight_date)}
+                          <strong>Departure:</strong> {flight.departure_airport_name}
+                          <br />
+                          <span className="text-gray-600">
+                            {formatDate(flight.departure_date)} at {formatTime(flight.departure_time)}
+                          </span>
                         </div>
                         <div>
-                          <strong>Route:</strong> {flight.departure_airport_name} → {flight.arrival_airport_name}
-                        </div>
-                        <div>
-                          <strong>Time:</strong> {formatTime(flight.departure_time)} - {formatTime(flight.arrival_time)}
+                          <strong>Arrival:</strong> {flight.arrival_airport_name}
+                          <br />
+                          <span className="text-gray-600">
+                            {formatDate(flight.arrival_date)} at {formatTime(flight.arrival_time)}
+                          </span>
                         </div>
                         <div>
                           <strong>Price:</strong> ${flight.price}
-                        </div>
-                        <div>
+                          <br />
                           <strong>Seats:</strong> {flight.available_seats}
                         </div>
-                        {flight.stopover_airport_name && (
-                          <div>
-                            <strong>Stopover:</strong> {flight.stopover_airport_name}
-                          </div>
-                        )}
                       </div>
+                      {renderStopovers(flight)}
                     </div>
                     <div className="flex gap-2">
                       <Button
