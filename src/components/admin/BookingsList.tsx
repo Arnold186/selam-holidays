@@ -17,7 +17,7 @@ const BookingsList = () => {
     queryKey: ['admin-bookings'],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from('bookings')
+        .from('bookings' as any)
         .select(`
           *,
           flights (
@@ -39,7 +39,7 @@ const BookingsList = () => {
   const updateBookingMutation = useMutation({
     mutationFn: async ({ bookingId, status }: { bookingId: string, status: string }) => {
       const { error } = await supabase
-        .from('bookings')
+        .from('bookings' as any)
         .update({ booking_status: status })
         .eq('id', bookingId);
       if (error) throw error;

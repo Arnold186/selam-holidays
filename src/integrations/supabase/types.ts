@@ -30,6 +30,47 @@ export type Database = {
         }
         Relationships: []
       }
+      bookings: {
+        Row: {
+          booking_status: string
+          created_at: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string
+          flight_id: string
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          booking_status?: string
+          created_at?: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string
+          flight_id: string
+          id?: string
+          updated_at?: string
+        }
+        Update: {
+          booking_status?: string
+          created_at?: string
+          customer_email?: string
+          customer_name?: string
+          customer_phone?: string
+          flight_id?: string
+          id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_flight_id_fkey"
+            columns: ["flight_id"]
+            isOneToOne: false
+            referencedRelation: "flights"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       flights: {
         Row: {
           arrival_airport_name: string

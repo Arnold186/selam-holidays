@@ -48,7 +48,7 @@ const BookingDialog = ({ flight, isOpen, onClose }: BookingDialogProps) => {
   const bookingMutation = useMutation({
     mutationFn: async (data: BookingFormData) => {
       const { error } = await supabase
-        .from('bookings')
+        .from('bookings' as any)
         .insert({
           flight_id: flight.id,
           customer_name: data.name,
