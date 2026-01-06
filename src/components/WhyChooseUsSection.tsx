@@ -1,82 +1,77 @@
-
 import React from "react";
 import { Globe, DollarSign, Zap, Headphones, Calendar, Users } from "lucide-react";
+import { motion } from "framer-motion";
 
 const WhyChooseUsSection = () => {
+  const features = [
+    {
+      icon: <Users size={28} />,
+      title: "Expert Consultants",
+      desc: "Passionate professionals dedicated to your unique needs.",
+      color: "bg-blue-100 text-blue-600"
+    },
+    {
+      icon: <DollarSign size={28} />,
+      title: "Best Value",
+      desc: "Transparent pricing with no hidden fees and great deals.",
+      color: "bg-green-100 text-green-600"
+    },
+    {
+      icon: <Zap size={28} />,
+      title: "Personalized",
+      desc: "Tailor-made itineraries that fit your style and budget.",
+      color: "bg-purple-100 text-purple-600"
+    },
+    {
+      icon: <Headphones size={28} />,
+      title: "24/7 Support",
+      desc: "Always available to assist you, anytime, anywhere.",
+      color: "bg-orange-100 text-orange-600"
+    },
+    {
+      icon: <Globe size={28} />,
+      title: "Local Insights",
+      desc: "Deep local knowledge for authentic experiences.",
+      color: "bg-teal-100 text-teal-600"
+    },
+    {
+      icon: <Calendar size={28} />,
+      title: "Global Reach",
+      desc: "Extensive network for seamless worldwide travel.",
+      color: "bg-red-100 text-red-600"
+    }
+  ];
+
   return (
-    <section className="section-container bg-gray-50">
+    <section className="section-container bg-white relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-slate-50 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2"></div>
+
       <div className="container-custom">
-        <div className="text-center mb-12">
-          <span className="section-subtitle">WHY CHOOSE US</span>
-          <h2 className="section-title">Why Choose Selam Holidays</h2>
+        <div className="text-center mb-16">
+          <span className="text-sm font-bold tracking-widest text-primary uppercase bg-primary/10 px-3 py-1 rounded-full">Why Select Us</span>
+          <h2 className="text-3xl md:text-4xl font-bold mt-4 text-gray-900">The Selam Difference</h2>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Feature 1 */}
-          <div className="bg-white rounded-lg p-6 shadow-sm card-hover">
-            <div className="p-4 bg-green-50 rounded-lg inline-block mb-4">
-              <Users size={32} className="text-primary" />
-            </div>
-            <h3 className="font-semibold text-xl text-tertiary-dark mb-3">Professional Consultants</h3>
-            <p className="text-tertiary">
-              Our team consists of experienced travel professionals who are passionate about creating the perfect trip for every client's unique needs and preferences.
-            </p>
-          </div>
-          
-          {/* Feature 2 */}
-          <div className="bg-white rounded-lg p-6 shadow-sm card-hover">
-            <div className="p-4 bg-orange-50 rounded-lg inline-block mb-4">
-              <DollarSign size={32} className="text-secondary" />
-            </div>
-            <h3 className="font-semibold text-xl text-tertiary-dark mb-3">Affordable Prices</h3>
-            <p className="text-tertiary">
-              We offer competitive rates and value for money on all our packages and services, with transparent pricing and no hidden fees.
-            </p>
-          </div>
-          
-          {/* Feature 3 */}
-          <div className="bg-white rounded-lg p-6 shadow-sm card-hover">
-            <div className="p-4 bg-green-50 rounded-lg inline-block mb-4">
-              <Zap size={32} className="text-primary" />
-            </div>
-            <h3 className="font-semibold text-xl text-tertiary-dark mb-3">Personalized Itineraries</h3>
-            <p className="text-tertiary">
-              Every journey is unique, which is why we tailor each trip to match your specific interests, timeline, and budget requirements.
-            </p>
-          </div>
-          
-          {/* Feature 4 */}
-          <div className="bg-white rounded-lg p-6 shadow-sm card-hover">
-            <div className="p-4 bg-orange-50 rounded-lg inline-block mb-4">
-              <Headphones size={32} className="text-secondary" />
-            </div>
-            <h3 className="font-semibold text-xl text-tertiary-dark mb-3">24/7 Customer Support</h3>
-            <p className="text-tertiary">
-              Our dedicated support team is available around the clock to assist you with any questions or concerns before, during, and after your trip.
-            </p>
-          </div>
-          
-          {/* Feature 5 */}
-          <div className="bg-white rounded-lg p-6 shadow-sm card-hover">
-            <div className="p-4 bg-green-50 rounded-lg inline-block mb-4">
-              <Globe size={32} className="text-primary" />
-            </div>
-            <h3 className="font-semibold text-xl text-tertiary-dark mb-3">Local Expertise</h3>
-            <p className="text-tertiary">
-              With deep knowledge of Uganda and East Africa, our guides and consultants provide authentic insights and access to unforgettable experiences.
-            </p>
-          </div>
-          
-          {/* Feature 6 */}
-          <div className="bg-white rounded-lg p-6 shadow-sm card-hover">
-            <div className="p-4 bg-orange-50 rounded-lg inline-block mb-4">
-              <Calendar size={32} className="text-secondary" />
-            </div>
-            <h3 className="font-semibold text-xl text-tertiary-dark mb-3">Global Connections</h3>
-            <p className="text-tertiary">
-              Our extensive network of partners worldwide ensures seamless travel experiences whether you're exploring Africa or venturing to international destinations.
-            </p>
-          </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
+          {features.map((feature, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              viewport={{ once: true }}
+              className="flex gap-4 group hover:bg-slate-50 p-4 rounded-xl transition-colors"
+            >
+              <div className={`shrink-0 w-14 h-14 rounded-2xl ${feature.color} flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                {feature.icon}
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{feature.desc}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

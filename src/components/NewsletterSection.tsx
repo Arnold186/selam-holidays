@@ -1,32 +1,41 @@
-
 import React from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const NewsletterSection = () => {
   return (
-    <section className="py-12 relative">
+    <section className="py-20 relative overflow-hidden">
       <div className="container-custom">
-        <div className="relative rounded-lg overflow-hidden bg-white shadow-lg">
-          {/* Background with leaves */}
-          <div className="absolute top-0 left-0 bottom-0 w-48 bg-contain bg-no-repeat bg-left-bottom opacity-30" style={{ backgroundImage: "url('https://cdn.pixabay.com/photo/2017/01/31/22/32/palm-tree-2027973_1280.png')" }}></div>
-          <div className="absolute top-0 right-0 bottom-0 w-48 bg-contain bg-no-repeat bg-right-bottom opacity-30" style={{ backgroundImage: "url('https://cdn.pixabay.com/photo/2017/01/31/22/32/palm-tree-2027973_1280.png')" }}></div>
-          
-          <div className="py-10 px-6 md:px-10 relative">
-            <div className="text-center max-w-xl mx-auto">
-              <h2 className="text-3xl font-bold text-tertiary-dark mb-3">Join The Newsletter</h2>
-              <p className="text-tertiary mb-8">To receive our best monthly deals and special offers</p>
-              
-              <div className="flex flex-col sm:flex-row gap-3">
-                <input
-                  type="email"
-                  placeholder="Enter Your Email Address..."
-                  className="flex-grow px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                />
-                <button className="btn-primary sm:w-auto w-full flex items-center justify-center">
-                  Subscribe <ArrowRight size={16} className="ml-2" />
-                </button>
-              </div>
+        <div className="relative rounded-3xl overflow-hidden bg-primary shadow-2xl">
+          {/* Abstract Shapes/Background */}
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-white opacity-5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-black opacity-10 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+
+          <div className="py-16 px-6 md:px-20 relative z-10 text-center">
+            <div className="inline-flex items-center justify-center p-3 bg-white/20 rounded-full mb-6 backdrop-blur-sm">
+              <Mail className="text-white w-6 h-6" />
             </div>
+
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Join Our Newsletter</h2>
+            <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto">
+              Subscribe to receive our best monthly deals, secret offers, and travel inspiration directly to your inbox.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+              <Input
+                type="email"
+                placeholder="Enter Your Email Address..."
+                className="bg-white/95 border-0 h-12 text-gray-900 placeholder:text-gray-400 focus-visible:ring-0 focus-visible:ring-offset-0"
+              />
+              <Button size="lg" className="h-12 bg-gray-900 hover:bg-black text-white px-8">
+                Subscribe <ArrowRight size={16} className="ml-2" />
+              </Button>
+            </div>
+
+            <p className="text-blue-200 text-xs mt-6">
+              No spam, just adventures. Unsubscribe at any time.
+            </p>
           </div>
         </div>
       </div>

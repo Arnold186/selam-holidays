@@ -1,6 +1,8 @@
-
 import React, { useState } from "react";
-import { Search, MapPin, Briefcase, Calendar, Clock } from "lucide-react";
+import { Search, MapPin, Briefcase, Calendar, Clock, ArrowRight, CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   const [location, setLocation] = useState("");
@@ -9,194 +11,200 @@ const HeroSection = () => {
   const [duration, setDuration] = useState("");
 
   const handleSearch = () => {
-    // Log the selected filter values
     console.log({ location, tourType, month, duration });
-    // Here you can add actual search/filter functionality later
-    alert(
-      `Searching for tours with:\nLocation: ${location}\nTour Type: ${tourType}\nMonth: ${month}\nDuration: ${duration}`
-    );
+    // Implement search logic
+  };
+
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    })
   };
 
   return (
-    <section
-      className="relative bg-cover bg-center h-[600px] text-white"
-      style={{ backgroundImage: "url('/image (12).png')" }}
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+    <section className="relative h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+      {/* Background Image with Parallax-like fix */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/image (12).png')" }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+      </div>
 
-      <div className="container-custom relative z-10 h-full">
-        <div className="flex flex-col justify-center h-full max-w-3xl pt-20">
-          <div className="bg-sky-700 inline-block px-6 py-2 rounded-full mb-5 w-fit">
-            <h2 className="text-white font-medium">Welcome</h2>
+      <div className="container-custom relative z-10 w-full pt-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+          {/* Text Content */}
+          <div className="lg:col-span-7 text-white">
+            <motion.div
+              custom={0}
+              initial="hidden"
+              animate="visible"
+              variants={fadeIn}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+              </span>
+              <span className="text-sm font-medium tracking-wide uppercase">Discover the Extraordinary</span>
+            </motion.div>
+
+            <motion.h1
+              custom={1}
+              initial="hidden"
+              animate="visible"
+              variants={fadeIn}
+              className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
+            >
+              Explore the World, <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-400">
+                One Journey at a Time
+              </span>
+            </motion.h1>
+
+            <motion.p
+              custom={2}
+              initial="hidden"
+              animate="visible"
+              variants={fadeIn}
+              className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl leading-relaxed"
+            >
+              At Selam Holidays, we turn your travel dreams into reality with seamless planning, expert guidance, and unforgettable experiences across the globe.
+            </motion.p>
+
+            <motion.div
+              custom={3}
+              initial="hidden"
+              animate="visible"
+              variants={fadeIn}
+              className="flex flex-wrap gap-4 mb-10"
+            >
+              {['Custom Tours', 'Group Excursions', 'Visa Assistance'].map((item, idx) => (
+                <div key={idx} className="flex items-center gap-2 text-sm font-medium bg-black/20 backdrop-blur-md px-4 py-2 rounded-lg border border-white/10">
+                  <CheckCircle2 size={16} className="text-primary-foreground" />
+                  {item}
+                </div>
+              ))}
+            </motion.div>
+
+            <motion.div
+              custom={4}
+              initial="hidden"
+              animate="visible"
+              variants={fadeIn}
+            >
+              <Button size="lg" className="h-14 px-8 text-lg bg-primary hover:bg-primary-dark shadow-xl hover:shadow-2xl transition-all rounded-full group">
+                Start Your Adventure
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </motion.div>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            Explore the World, One Journey at a Time
-          </h1>
+          {/* Search Card - Floating/Stacked */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="lg:col-span-5 hidden lg:block"
+          >
+            <div className="bg-white/95 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-white/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Find Your Next Trip</h3>
 
-          <p className="text-lg mb-8 opacity-90">
-            At Selam Holidays, we turn your travel dreams into reality with
-            seamless planning, expert guidance, and unforgettable experiences.
-          </p>
+              <div className="space-y-5">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                    <MapPin size={16} className="text-primary" /> Destination
+                  </label>
+                  <Select onValueChange={setLocation}>
+                    <SelectTrigger className="h-12 bg-gray-50 border-gray-200 focus:ring-primary">
+                      <SelectValue placeholder="Where do you want to go?" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="rwanda">Rwanda</SelectItem>
+                      <SelectItem value="uganda">Uganda</SelectItem>
+                      <SelectItem value="kenya">Kenya</SelectItem>
+                      <SelectItem value="tanzania">Tanzania</SelectItem>
+                      <SelectItem value="dubai">Dubai</SelectItem>
+                      <SelectItem value="turkey">Turkey</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
 
-          <div className="flex flex-wrap gap-3 mb-8">
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
-              Flight Bookings
-            </span>
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
-              Custom Tours
-            </span>
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
-              Group Excursions
-            </span>
-            <span className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
-              Visa Assistance
-            </span>
-          </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                    <Briefcase size={16} className="text-primary" /> Tour Type
+                  </label>
+                  <Select onValueChange={setTourType}>
+                    <SelectTrigger className="h-12 bg-gray-50 border-gray-200 focus:ring-primary">
+                      <SelectValue placeholder="Adventure, Safari, Holiday..." />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="gorilla">Gorilla Trekking</SelectItem>
+                      <SelectItem value="safari">Safari</SelectItem>
+                      <SelectItem value="cultural">Cultural Tour</SelectItem>
+                      <SelectItem value="holiday">Holiday Package</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
 
-          {/* Moved "Book A Trip" button here under content */}
-          <button className="btn-primary w-fit mb-40" onClick={() => alert('Booking a trip!')}>
-            Book A Trip
-          </button>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                      <Calendar size={16} className="text-primary" /> Month
+                    </label>
+                    <Select onValueChange={setMonth}>
+                      <SelectTrigger className="h-12 bg-gray-50 border-gray-200 focus:ring-primary">
+                        <SelectValue placeholder="Any Month" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="january">January</SelectItem>
+                        <SelectItem value="june">June</SelectItem>
+                        <SelectItem value="december">December</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                      <Clock size={16} className="text-primary" /> Duration
+                    </label>
+                    <Select onValueChange={setDuration}>
+                      <SelectTrigger className="h-12 bg-gray-50 border-gray-200 focus:ring-primary">
+                        <SelectValue placeholder="Any Days" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="1">1 Day</SelectItem>
+                        <SelectItem value="2-3">2-3 Days</SelectItem>
+                        <SelectItem value="4-7">4-7 Days</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+
+                <Button className="w-full h-12 text-lg font-semibold bg-primary hover:bg-primary-dark mt-4" onClick={handleSearch}>
+                  <Search size={18} className="mr-2" />
+                  Search Packages
+                </Button>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
 
-      {/* Search Form */}
-      <div className="absolute bottom-0 left-0 right-0 transform translate-y-1/2">
-        <div className="container-custom">
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <div className="space-y-2">
-                <label
-                  htmlFor="location"
-                  className="block text-tertiary-dark font-medium"
-                >
-                  Select Location
-                </label>
-                <div className="relative">
-                  <select
-                    id="location"
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
-                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                  >
-                    <option value="">Select a location</option>
-                    <option value="rwanda">Rwanda</option>
-                    <option value="uganda">Uganda</option>
-                    <option value="kenya">Kenya</option>
-                    <option value="tanzania">Tanzania</option>
-                    <option value="ethiopia">Ethiopia</option>
-                    <option value="dubai">Dubai</option>
-                    <option value="turkey">Turkey</option>
-                    <option value="egypt">Egypt</option>
-                    <option value="france">France</option>
-                  </select>
-                  <div className="absolute right-3 top-3 text-primary pointer-events-none">
-                    <MapPin size={20} />
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <label
-                  htmlFor="tour-type"
-                  className="block text-tertiary-dark font-medium"
-                >
-                  Select Tour Type
-                </label>
-                <div className="relative">
-                  <select
-                    id="tour-type"
-                    value={tourType}
-                    onChange={(e) => setTourType(e.target.value)}
-                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                  >
-                    <option value="">Select tour type</option>
-                    <option value="gorilla">Gorilla Trekking</option>
-                    <option value="safari">Safari</option>
-                    <option value="cultural">Cultural Tour</option>
-                    <option value="holiday">Holiday Package</option>
-                    <option value="city">City Break</option>
-                  </select>
-                  <div className="absolute right-3 top-3 text-primary pointer-events-none">
-                    <Briefcase size={20} />
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <label
-                  htmlFor="month"
-                  className="block text-tertiary-dark font-medium"
-                >
-                  Select Month
-                </label>
-                <div className="relative">
-                  <select
-                    id="month"
-                    value={month}
-                    onChange={(e) => setMonth(e.target.value)}
-                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                  >
-                    <option value="">Select a month</option>
-                    <option value="january">January</option>
-                    <option value="february">February</option>
-                    <option value="march">March</option>
-                    <option value="april">April</option>
-                    <option value="may">May</option>
-                    <option value="june">June</option>
-                    <option value="july">July</option>
-                    <option value="august">August</option>
-                    <option value="september">September</option>
-                    <option value="october">October</option>
-                    <option value="november">November</option>
-                    <option value="december">December</option>
-                  </select>
-                  <div className="absolute right-3 top-3 text-primary pointer-events-none">
-                    <Calendar size={20} />
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <label
-                  htmlFor="duration"
-                  className="block text-tertiary-dark font-medium"
-                >
-                  Select Duration
-                </label>
-                <div className="relative">
-                  <select
-                    id="duration"
-                    value={duration}
-                    onChange={(e) => setDuration(e.target.value)}
-                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                  >
-                    <option value="">Select duration</option>
-                    <option value="1">1 day</option>
-                    <option value="2-3">2-3 days</option>
-                    <option value="4-7">4-7 days</option>
-                    <option value="7-14">7-14 days</option>
-                    <option value="14+">14+ days</option>
-                  </select>
-                  <div className="absolute right-3 top-3 text-primary pointer-events-none">
-                    <Clock size={20} />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6 flex justify-end">
-              <button
-                className="btn-primary flex items-center"
-                onClick={handleSearch}
-              >
-                <Search size={16} className="mr-2" />
-                Search Now
-              </button>
-            </div>
-          </div>
+      {/* Mobile Search - Bottom Sheet Style (Visible only on small screens) */}
+      <div className="absolute bottom-0 left-0 right-0 p-4 lg:hidden z-20">
+        <div className="bg-white rounded-t-xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)] p-6">
+          <Button className="w-full h-12 text-lg font-semibold bg-primary" onClick={() => document.getElementById('mobile-search-dialog')?.showModal?.()}>
+            <Search size={18} className="mr-2" />
+            Find Your Trip
+          </Button>
         </div>
       </div>
     </section>

@@ -1,64 +1,97 @@
-
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { Menu, X, Phone } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, Phone, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const navLinks = [
+    { title: "HOME", path: "/" },
+    { title: "ABOUT", path: "/about" },
+    { title: "TOURS", path: "/tours" },
+    { title: "FLIGHTS", path: "/flights" },
+    { title: "DESTINATION", path: "/destination" },
+    { title: "CONTACT", path: "/contact" },
+  ];
+
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm">
-      <div className="container-custom py-3">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+          ? "bg-white/95 backdrop-blur-md shadow-sm py-2"
+          : "bg-transparent py-4"
+        }`}
+    >
+      <div className="container-custom">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <div className="text-primary mr-2">
-              <img src="/selam LOGO (2).png" alt="Logo" className="w-50 h-10" />
+          <Link to="/" className="flex items-center group">
+            <div className="mr-2 transition-transform duration-300 group-hover:scale-105">
+              <img src="/selam LOGO (2).png" alt="Selam Holidays" className="h-10 md:h-12 w-auto object-contain" />
             </div>
-            {/* <span className="text-xl font-bold text-tertiary-dark">Selam Holiday</span> */}
           </Link>
-          
+
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center">
-            <ul className="flex space-x-8">
-              <li>
-                <Link to="/" className="text-tertiary-dark font-medium hover:text-primary transition-colors">HOME</Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-tertiary-dark font-medium hover:text-primary transition-colors">ABOUT</Link>
-              </li>
-              <li>
-                <Link to="/tours" className="text-tertiary-dark font-medium hover:text-primary transition-colors">TOURS</Link>
-              </li>
-              <li>
-                <Link to="/flights" className="text-tertiary-dark font-medium hover:text-primary transition-colors">FLIGHTS</Link>
-              </li>
-              <li>
-                <Link to="/destination" className="text-tertiary-dark font-medium hover:text-primary transition-colors">DESTINATION</Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-tertiary-dark font-medium hover:text-primary transition-colors">CONTACT</Link>
-              </li>
+          <nav className="hidden lg:flex items-center">
+            <ul className="flex space-x-1">
+              {navLinks.map((link) => (
+                <li key={link.title}>
+                  <Link
+                    to={link.path}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${location.pathname === link.path
+                        ? "text-primary bg-primary/5"
+                        : scrolled ? "text-gray-700 hover:text-primary hover:bg-gray-50" : "text-white hover:bg-white/20"
+                      }`}
+                  >
+                    {link.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
-          
-          {/* Contact Info */}
-          <div className="hidden md:flex items-center">
-            <div className="text-right">
-            <p className="text-xs text-sky-700">To More Inquiry</p>
 
-              <p className="text-sm font-semibold">+256 762 283203</p>
-            </div>
-            <div className="ml-2 text-sky-800 bg-sky-100 p-2 rounded-full">
-              <Phone size={20} />
-            </div>
+          {/* Right Area: Contact / CTA */}
+          <div className="hidden lg:flex items-center gap-4">
+            <a href="tel:+256762283203" className={`hidden xl:flex items-center gap-2 text-sm font-semibold ${scrolled ? "text-gray-800" : "text-white"}`}>
+              <div className={`p-2 rounded-full ${scrolled ? "bg-primary/10 text-primary" : "bg-white/20 text-white"}`}>
+                <Phone size={18} />
+              </div>
+              <span>+256 762 283203</span>
+            </a>
+            <Button
+              className={`rounded-full px-6 transition-all shadow-lg hover:shadow-xl ${scrolled
+                  ? "bg-primary text-white"
+                  : "bg-white text-primary hover:bg-gray-100"
+                }`}
+            >
+              Book Now
+            </Button>
           </div>
-          
+
           {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden text-tertiary-dark p-2"
+          <button
+            className={`lg:hidden p-2 rounded-lg ${scrolled ? "text-gray-800" : "text-white"}`}
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
@@ -66,50 +99,36 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white border-t">
-          <ul className="flex flex-col py-4 px-6">
-            <li className="py-2">
-              <Link to="/" className="block text-tertiary-dark font-medium hover:text-primary transition-colors" onClick={toggleMenu}>
-                HOME
-              </Link>
-            </li>
-            <li className="py-2">
-              <Link to="/about" className="block text-tertiary-dark font-medium hover:text-primary transition-colors" onClick={toggleMenu}>
-                ABOUT
-              </Link>
-            </li>
-            <li className="py-2">
-              <Link to="/tours" className="block text-tertiary-dark font-medium hover:text-primary transition-colors" onClick={toggleMenu}>
-                TOURS
-              </Link>
-            </li>
-            <li className="py-2">
-              <Link to="/destination" className="block text-tertiary-dark font-medium hover:text-primary transition-colors" onClick={toggleMenu}>
-                DESTINATION
-              </Link>
-            </li>
-            <li className="py-2">
-              <Link to="/pages" className="block text-tertiary-dark font-medium hover:text-primary transition-colors" onClick={toggleMenu}>
-                PAGES
-              </Link>
-            </li>
-            <li className="py-2">
-              <Link to="/contact" className="block text-tertiary-dark font-medium hover:text-primary transition-colors" onClick={toggleMenu}>
-                CONTACT
-              </Link>
-            </li>
-            <li className="py-2 border-t mt-2 pt-4">
-              <div className="flex items-center">
-                <Phone size={16} className="text-primary mr-2" />
-                <span className="text-sm font-semibold">+990-737 621 432</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-      )}
+
+      {/* Mobile Navigation Overlay */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-white border-b overflow-hidden shadow-xl"
+          >
+            <ul className="flex flex-col py-6 px-6 space-y-4">
+              {navLinks.map((link) => (
+                <li key={link.title}>
+                  <Link
+                    to={link.path}
+                    className={`block text-lg font-medium transition-colors ${location.pathname === link.path ? "text-primary" : "text-gray-600 hover:text-primary"
+                      }`}
+                    onClick={toggleMenu}
+                  >
+                    {link.title}
+                  </Link>
+                </li>
+              ))}
+              <li className="pt-4 border-t border-gray-100">
+                <Button className="w-full text-lg h-12 rounded-full">Book A Trip</Button>
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

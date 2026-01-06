@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { supabase } from "@/integrations/supabase/client";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Lock, Mail, User, Plane } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -19,88 +20,33 @@ const Auth = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if user is already logged in
-    const checkUser = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session?.user) {
-        navigate('/admin');
-      }
-    };
-    checkUser();
+    const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
+    if (isAuthenticated) {
+      navigate("/admin");
+    }
   }, [navigate]);
+
 
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    try {
-      if (isLogin) {
-        // Login
-        const { data, error } = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        });
+    // Simple local storage auth
+    setTimeout(() => {
+      localStorage.setItem("isAuthenticated", "true");
+      // Store a dummy user object for Admin component to use if needed, 
+      // though Admin.tsx will also be updated to just check local storage.
+      localStorage.setItem("user", JSON.stringify({ email: email || "admin@example.com" }));
 
-        if (error) {
-          toast({
-            title: "Login failed",
-            description: error.message,
-            variant: "destructive",
-          });
-          return;
-        }
-
-        if (data.user) {
-          toast({
-            title: "Login successful",
-            description: "Welcome back! Redirecting to admin dashboard...",
-          });
-          navigate('/admin');
-        }
-      } else {
-        // Signup
-        const { data, error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: {
-            emailRedirectTo: `${window.location.origin}/admin`
-          }
-        });
-
-        if (error) {
-          toast({
-            title: "Signup failed",
-            description: error.message,
-            variant: "destructive",
-          });
-          return;
-        }
-
-        if (data.user) {
-          toast({
-            title: "Account created successfully",
-            description: data.user.email_confirmed_at 
-              ? "You can now log in!" 
-              : "Please check your email and click the confirmation link before logging in.",
-          });
-          
-          if (data.user.email_confirmed_at) {
-            navigate('/admin');
-          } else {
-            setIsLogin(true); // Switch to login form
-          }
-        }
-      }
-    } catch (error: any) {
       toast({
-        title: "Authentication failed",
-        description: "An error occurred. Please try again.",
-        variant: "destructive",
+        title: isLogin ? "Login successful" : "Account created",
+        description: "Welcome back! Redirecting to admin dashboard...",
       });
-    } finally {
+      navigate("/admin");
       setLoading(false);
-    }
+    }, 1000);
   };
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-sky-700 to-primary flex items-center justify-center p-4">
@@ -118,8 +64,8 @@ const Auth = () => {
               {isLogin ? 'Sign In' : 'Create Account'}
             </CardTitle>
             <p className="text-sm text-gray-600 mt-2">
-              {isLogin 
-                ? 'Access the flight management dashboard' 
+              {isLogin
+                ? 'Access the flight management dashboard'
                 : 'Create an account to manage flights'
               }
             </p>
@@ -160,21 +106,21 @@ const Auth = () => {
                 className="w-full bg-primary hover:bg-primary/90"
                 disabled={loading}
               >
-                {loading 
-                  ? (isLogin ? "Signing in..." : "Creating account...") 
+                {loading
+                  ? (isLogin ? "Signing in..." : "Creating account...")
                   : (isLogin ? "Sign In" : "Create Account")
                 }
               </Button>
             </form>
-            
+
             <div className="mt-4 text-center">
               <Button
                 variant="link"
                 onClick={() => setIsLogin(!isLogin)}
                 className="text-sm"
               >
-                {isLogin 
-                  ? "Don't have an account? Sign up" 
+                {isLogin
+                  ? "Don't have an account? Sign up"
                   : "Already have an account? Sign in"
                 }
               </Button>

@@ -14,6 +14,7 @@ import Destination from "./pages/Destination";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import ChatBot from "./components/ChatBot";
+import TourDetail from "./pages/TourDetail";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/tours" element={<Tours />} />
+          <Route path="/tours/:id" element={<TourDetail />} />
           <Route path="/flights" element={<Flights />} />
           <Route path="/destination" element={<Destination />} />
           <Route path="/contact" element={<Contact />} />

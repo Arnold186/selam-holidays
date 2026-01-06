@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
+
 import AdminDashboard from "@/components/admin/AdminDashboard";
 
 const Admin = () => {
@@ -10,45 +10,22 @@ const Admin = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const initializeAuth = async () => {
-      try {
-        console.log('Checking authentication status...');
-        const { data: { session } } = await supabase.auth.getSession();
-        console.log('Current session:', session);
-        
-        if (session?.user) {
-          console.log('User is authenticated:', session.user.id);
-          setUser(session.user);
-        } else {
-          console.log('No authenticated user, redirecting to auth page');
-          navigate('/auth');
-        }
-      } catch (error) {
-        console.error('Error checking authentication:', error);
-        navigate('/auth');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    initializeAuth();
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-      console.log('Auth state changed:', event, session?.user?.id);
-      
-      if (session?.user) {
-        console.log('User authenticated, showing dashboard');
-        setUser(session.user);
+    const checkAuth = () => {
+      const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
+      if (!isAuthenticated) {
+        console.log("No authenticated user, redirecting to auth page");
+        navigate("/auth");
       } else {
-        console.log('User signed out, redirecting to auth');
-        setUser(null);
-        navigate('/auth');
+        console.log("User authenticated, showing dashboard");
+        const storedUser = localStorage.getItem("user");
+        setUser(storedUser ? JSON.parse(storedUser) : { email: "admin@example.com" });
       }
       setLoading(false);
-    });
+    };
 
-    return () => subscription.unsubscribe();
+    checkAuth();
   }, [navigate]);
+
 
   if (loading) {
     return (
