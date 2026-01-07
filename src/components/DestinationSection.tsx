@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 const destinations = [
-  { name: "Rwanda", image: "Rwanda.jpg", size: "lg" },
-  { name: "Uganda", image: "Uganda.png", size: "sm" },
+  { name: "Uganda", image: "Kampala.jpg", size: "lg" },
+  { name: "Rwanda", image: "Rwanda.jpg", size: "sm" },
   { name: "Kenya", image: "Nairobi.jpg", size: "sm" },
   { name: "Tanzania", image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", size: "sm" },
   { name: "Dubai", image: "Dubai.jpeg", size: "sm" },
@@ -44,7 +44,7 @@ const DestinationSection = () => {
                 <MapPin size={14} /> Africa
               </div>
               <h3 className="text-3xl font-bold">{destinations[0].name}</h3>
-              <p className="text-white/80 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">The Land of a Thousand Hills</p>
+              <p className="text-white/80 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">The pearl of Africa</p>
             </div>
           </motion.div>
 

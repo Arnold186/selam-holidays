@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Globe, ShieldCheck } from "lucide-react";
 
@@ -55,9 +56,11 @@ const AboutSection = () => {
             </div>
 
             <div className="mt-10">
-              <Button size="lg" className="rounded-full px-8 h-12 text-lg shadow-lg hover:shadow-xl transition-all">
-                More About Us <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+              <Link to="/about">
+                <Button size="lg" className="rounded-full px-8 h-12 text-lg shadow-lg hover:shadow-xl transition-all">
+                  More About Us <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
             </div>
           </motion.div>
 

@@ -3,6 +3,7 @@ import { Search, MapPin, Briefcase, Calendar, Clock, ArrowRight, CheckCircle2 } 
 import { motion } from "framer-motion";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
   const [location, setLocation] = useState("");
@@ -10,9 +11,16 @@ const HeroSection = () => {
   const [month, setMonth] = useState("");
   const [duration, setDuration] = useState("");
 
+  const navigate = useNavigate();
+
   const handleSearch = () => {
-    console.log({ location, tourType, month, duration });
-    // Implement search logic
+    const params = new URLSearchParams();
+    if (location) params.append("location", location);
+    if (tourType) params.append("type", tourType);
+    if (month) params.append("month", month);
+    if (duration) params.append("duration", duration);
+
+    navigate(`/tours?${params.toString()}`);
   };
 
   const fadeIn = {

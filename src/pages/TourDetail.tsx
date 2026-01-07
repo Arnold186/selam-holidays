@@ -24,7 +24,7 @@ const TourDetail = () => {
     const [name, setName] = useState("");
 
     // WhatsApp Number - Replace with actual number
-    const WHATSAPP_NUMBER = "+250785713489";
+    const WHATSAPP_NUMBER = "+256 762 283203";
 
     useEffect(() => {
         const loadTour = async () => {

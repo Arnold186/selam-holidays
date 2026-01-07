@@ -53,7 +53,7 @@ const PopularDestinations = () => {
             Discover our most sought-after destinations that offer extraordinary experiences, rich cultures, and breathtaking landscapes.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {destinations.map((destination, index) => (
             <motion.div
@@ -68,6 +68,7 @@ const PopularDestinations = () => {
                 <img
                   src={destination.image}
                   alt={destination.name}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
@@ -77,7 +78,7 @@ const PopularDestinations = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="p-5">
                 <div className="mb-4">
                   <h4 className="text-sm font-semibold text-tertiary-dark mb-2">Top Attractions:</h4>
@@ -90,7 +91,7 @@ const PopularDestinations = () => {
                     ))}
                   </ul>
                 </div>
-                
+
                 <div className="flex justify-between text-sm text-tertiary border-t border-gray-100 pt-3">
                   <div className="flex items-center">
                     <Sun size={14} className="mr-1 text-secondary" />
@@ -101,7 +102,7 @@ const PopularDestinations = () => {
                     <span>Stay: {destination.duration}</span>
                   </div>
                 </div>
-                
+
                 <button className="w-full mt-4 py-2 bg-gray-100 text-tertiary-dark font-medium rounded-md hover:bg-gray-200 transition-colors">
                   View Tours
                 </button>

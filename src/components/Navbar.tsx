@@ -31,7 +31,7 @@ const Navbar = () => {
     { title: "HOME", path: "/" },
     { title: "ABOUT", path: "/about" },
     { title: "TOURS", path: "/tours" },
-    { title: "FLIGHTS", path: "/flights" },
+    // { title: "FLIGHTS", path: "/flights" },
     { title: "DESTINATION", path: "/destination" },
     { title: "CONTACT", path: "/contact" },
   ];
@@ -39,8 +39,8 @@ const Navbar = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-sm py-2"
-          : "bg-transparent py-4"
+        ? "bg-white/95 backdrop-blur-md shadow-sm py-2"
+        : "bg-transparent py-4"
         }`}
     >
       <div className="container-custom">
@@ -60,8 +60,8 @@ const Navbar = () => {
                   <Link
                     to={link.path}
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${location.pathname === link.path
-                        ? "text-primary bg-primary/5"
-                        : scrolled ? "text-gray-700 hover:text-primary hover:bg-gray-50" : "text-white hover:bg-white/20"
+                      ? "text-primary bg-primary/5"
+                      : scrolled ? "text-gray-700 hover:text-primary hover:bg-gray-50" : "text-white hover:bg-white/20"
                       }`}
                   >
                     {link.title}
@@ -79,14 +79,16 @@ const Navbar = () => {
               </div>
               <span>+256 762 283203</span>
             </a>
-            <Button
-              className={`rounded-full px-6 transition-all shadow-lg hover:shadow-xl ${scrolled
+            <Link to="/tours">
+              <Button
+                className={`rounded-full px-6 transition-all shadow-lg hover:shadow-xl ${scrolled
                   ? "bg-primary text-white"
                   : "bg-white text-primary hover:bg-gray-100"
-                }`}
-            >
-              Book Now
-            </Button>
+                  }`}
+              >
+                Book Now
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -123,7 +125,9 @@ const Navbar = () => {
                 </li>
               ))}
               <li className="pt-4 border-t border-gray-100">
-                <Button className="w-full text-lg h-12 rounded-full">Book A Trip</Button>
+                <Link to="/tours" onClick={toggleMenu}>
+                  <Button className="w-full text-lg h-12 rounded-full">Book A Trip</Button>
+                </Link>
               </li>
             </ul>
           </motion.div>
