@@ -6,7 +6,7 @@ import DestinationHero from "@/components/destination/DestinationHero";
 import DestinationMap from "@/components/destination/DestinationMap";
 import PopularDestinations from "@/components/destination/PopularDestinations";
 import DestinationActivities from "@/components/destination/DestinationActivities";
-import RelatedTours from "@/components/destination/RelatedTours";
+
 import NewsletterSection from "@/components/NewsletterSection";
 
 const Destination = () => {
@@ -17,7 +17,6 @@ const Destination = () => {
       <DestinationMap />
       <PopularDestinations />
       <DestinationActivities />
-      <RelatedTours />
       <NewsletterSection />
       <Footer />
     </div>

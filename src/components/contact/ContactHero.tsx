@@ -6,7 +6,7 @@ const ContactHero = () => {
   return (
     <section
       className="relative bg-cover bg-center h-[400px] text-white"
-      style={{ backgroundImage: "url('/image (13).png')" }}
+      style={{ backgroundImage: "url('/image.png')" }}
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>

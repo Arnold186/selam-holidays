@@ -103,7 +103,6 @@ export default {
 				"fade-out": "fade-out 0.5s ease-in-out"
 			},
 			backgroundImage: {
-				'hero-pattern': "url('/public/lovable-uploads/82454923-5e39-44d2-96b9-65c4c162655c.png')",
 			}
 		}
 	},

@@ -61,7 +61,7 @@ const Navbar = () => {
                     to={link.path}
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${location.pathname === link.path
                       ? "text-primary bg-primary/5"
-                      : scrolled ? "text-gray-700 hover:text-primary hover:bg-gray-50" : "text-white hover:bg-white/20"
+                      : scrolled ? "text-gray-700 hover:text-primary hover:bg-gray-50" : "text-white hover:bg-white/20 drop-shadow-md"
                       }`}
                   >
                     {link.title}
@@ -73,7 +73,7 @@ const Navbar = () => {
 
           {/* Right Area: Contact / CTA */}
           <div className="hidden lg:flex items-center gap-4">
-            <a href="tel:+256762283203" className={`hidden xl:flex items-center gap-2 text-sm font-semibold ${scrolled ? "text-gray-800" : "text-white"}`}>
+            <a href="tel:+256762283203" className={`hidden xl:flex items-center gap-2 text-sm font-semibold ${scrolled ? "text-gray-800" : "text-white drop-shadow-md"}`}>
               <div className={`p-2 rounded-full ${scrolled ? "bg-primary/10 text-primary" : "bg-white/20 text-white"}`}>
                 <Phone size={18} />
               </div>
@@ -93,7 +93,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className={`lg:hidden p-2 rounded-lg ${scrolled ? "text-gray-800" : "text-white"}`}
+            className={`lg:hidden p-2 rounded-lg ${scrolled ? "text-gray-800" : "text-white drop-shadow-md"}`}
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >

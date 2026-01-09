@@ -6,7 +6,7 @@ const ToursHero = () => {
   return (
     <section
       className="relative bg-cover bg-center h-[500px] text-white"
-      style={{ backgroundImage: "url('/image (9).png')" }}
+      style={{ backgroundImage: "url('/Rwenzori.png')" }}
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>

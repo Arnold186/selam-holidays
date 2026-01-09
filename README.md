@@ -1,73 +1,81 @@
-# Welcome to your Lovable project
+# Selam Holidays & Tours
 
-## Project info
+Welcome to the **Selam Holidays & Tours** official website codebase. This project is a modern travel booking and information platform designed to showcase destinations, tours, and travel experiences in East Africa and beyond.
 
-**URL**: https://lovable.dev/projects/4f166aa1-a485-4218-8c1d-c9ac0aad7f4d
+## 🚀 Features
 
-## How can I edit this code?
+-   **Destination Showcases**: Interactive maps and detailed guides for top destinations like Uganda, Rwanda, Kenya, Tanzania, Dubai, and more.
+-   **Tour Management**: Browse and book curated tour packages.
+-   **Responsive Design**: A fully responsive UI optimized for mobile, tablet, and desktop devices.
+-   **Modern UI/UX**: Built with a focus on aesthetics and user experience using modern web technologies.
+-   **Contact & Booking**: Easy-to-use contact forms and booking integrations.
 
-There are several ways of editing your application.
+## 🛠️ Technology Stack
 
-**Use Lovable**
+This project is built using the following technologies:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/4f166aa1-a485-4218-8c1d-c9ac0aad7f4d) and start prompting.
+-   **Runtime**: [Node.js](https://nodejs.org/)
+-   **Framework**: [React](https://reactjs.org/)
+-   **Build Tool**: [Vite](https://vitejs.dev/)
+-   **Language**: [TypeScript](https://www.typescriptlang.org/)
+-   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+-   **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
+-   **Icons**: [Lucide React](https://lucide.dev/)
+-   **Animations**: [Framer Motion](https://www.framer.com/motion/)
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🏁 Getting Started
 
-**Use your preferred IDE**
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Ensure you have Node.js and npm (or pnpm/yarn) installed on your system.
 
-Follow these steps:
+### Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1.  **Clone the repository**
+    ```bash
+    git clone <repository-url>
+    cd selam-holidays
+    ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+3.  **Start the development server**
+    ```bash
+    npm run dev
+    ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+    The application will be available at `http://localhost:8080` (or the port shown in your terminal).
+
+## 📁 Project Structure
+
+```
+src/
+├── components/     # Reusable UI components
+├── pages/          # Application page views
+├── lib/            # Utility functions and configurations
+├── hooks/          # Custom React hooks
+└── assets/         # Static assets (images, fonts, etc.)
 ```
 
-**Edit a file directly in GitHub**
+## 🤝 Contributing
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-**Use GitHub Codespaces**
+1.  Fork the project
+2.  Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📄 License
 
-## What technologies are used for this project?
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/4f166aa1-a485-4218-8c1d-c9ac0aad7f4d) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+**Selam Holidays & Tours** - *Experience the Beauty of Africa*

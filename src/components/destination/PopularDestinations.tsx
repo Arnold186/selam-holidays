@@ -1,5 +1,6 @@
 
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { MapPin, Clock, Sun } from "lucide-react";
 
@@ -103,9 +104,9 @@ const PopularDestinations = () => {
                   </div>
                 </div>
 
-                <button className="w-full mt-4 py-2 bg-gray-100 text-tertiary-dark font-medium rounded-md hover:bg-gray-200 transition-colors">
+                <Link to="/tours" className="block w-full mt-4 py-2 bg-gray-100 text-tertiary-dark font-medium rounded-md hover:bg-gray-200 transition-colors text-center">
                   View Tours
-                </button>
+                </Link>
               </div>
             </motion.div>
           ))}

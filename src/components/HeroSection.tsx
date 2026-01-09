@@ -109,10 +109,6 @@ const HeroSection = () => {
               animate="visible"
               variants={fadeIn}
             >
-              <Button size="lg" className="h-14 px-8 text-lg bg-primary hover:bg-primary-dark shadow-xl hover:shadow-2xl transition-all rounded-full group">
-                Start Your Adventure
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
             </motion.div>
           </div>
 

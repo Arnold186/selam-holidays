@@ -10,7 +10,7 @@ const ContactMap = () => {
           <span className="section-subtitle">FIND US</span>
           <h2 className="section-title">Our Location</h2>
         </div>
-        
+
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -19,12 +19,16 @@ const ContactMap = () => {
           className="rounded-lg overflow-hidden shadow-md h-[400px]"
         >
           {/* Replace with actual Google Maps embed */}
-          <div className="bg-gray-200 w-full h-full flex items-center justify-center">
-            <div className="text-center">
-              <p className="text-tertiary mb-4">Map placeholder - In a real implementation, this would be a Google Maps iframe with the actual office location.</p>
-              <p className="text-primary font-medium">Lloyds Mall, Kampala, Uganda</p>
-            </div>
-          </div>
+          <iframe
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            loading="lazy"
+            allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=Lloyds+Mall%2C+Entebbe+Road%2C+Kampala%2C+Uganda&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            title="Selam Holidays Location"
+          ></iframe>
         </motion.div>
       </div>
     </section>
