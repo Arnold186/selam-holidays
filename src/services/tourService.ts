@@ -10,6 +10,8 @@ export interface Tour {
     groupSize: string;
     season?: string;
     price: number;
+    priceCitizen?: number; // Added Citizen price
+    priceEAC?: number; // Added EAC price
     discountPrice?: number;
     rating?: number; // Added rating field
     category: string;

@@ -22,7 +22,7 @@ type FormValues = z.infer<typeof formSchema>;
 
 const ContactForm = () => {
   const { toast } = useToast();
-  
+
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -33,12 +33,26 @@ const ContactForm = () => {
       message: "",
     },
   });
-  
+
   function onSubmit(data: FormValues) {
-    console.log(data);
+    // Email configuration
+    const PRIMARY_EMAIL = "info@selamtravels.com";
+    const CC_EMAIL = "selamholidays@gmail.com";
+
+    const subject = `New Message: ${data.subject}`;
+    const body = `Name: ${data.name}
+Email: ${data.email}
+Phone: ${data.phone}
+
+Message:
+${data.message}`;
+
+    const mailtoLink = `mailto:${PRIMARY_EMAIL}?cc=${CC_EMAIL}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+
     toast({
-      title: "Message Sent",
-      description: "Thank you for contacting us. We'll get back to you soon!",
+      title: "Opening Email Client",
+      description: "We're redirecting you to your email client to send the message.",
     });
     form.reset();
   }
@@ -67,7 +81,7 @@ const ContactForm = () => {
                 </FormItem>
               )}
             />
-            
+
             <FormField
               control={form.control}
               name="email"
@@ -82,7 +96,7 @@ const ContactForm = () => {
               )}
             />
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FormField
               control={form.control}
@@ -97,7 +111,7 @@ const ContactForm = () => {
                 </FormItem>
               )}
             />
-            
+
             <FormField
               control={form.control}
               name="subject"
@@ -112,7 +126,7 @@ const ContactForm = () => {
               )}
             />
           </div>
-          
+
           <FormField
             control={form.control}
             name="message"
@@ -120,19 +134,19 @@ const ContactForm = () => {
               <FormItem>
                 <FormLabel>Your Message</FormLabel>
                 <FormControl>
-                  <Textarea 
-                    placeholder="Please provide details about your inquiry..." 
+                  <Textarea
+                    placeholder="Please provide details about your inquiry..."
                     className="min-h-32"
-                    {...field} 
+                    {...field}
                   />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          
-          <Button 
-            type="submit" 
+
+          <Button
+            type="submit"
             className="w-full bg-primary hover:bg-primary-dark"
           >
             Send Message

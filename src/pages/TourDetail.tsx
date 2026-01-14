@@ -12,6 +12,7 @@ import { Calendar as CalendarIcon, MapPin, Clock, User, CheckCircle2, Share2, Ar
 import { format } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 
 const TourDetail = () => {
@@ -21,10 +22,12 @@ const TourDetail = () => {
     const [loading, setLoading] = useState(true);
     const [date, setDate] = useState<Date>();
     const [guests, setGuests] = useState(1);
+    const [guestType, setGuestType] = useState<"international" | "citizen" | "eac">("international");
     const [name, setName] = useState("");
 
-    // WhatsApp Number - Replace with actual number
-    const WHATSAPP_NUMBER = "+256 762 283203";
+    // Email configuration
+    const PRIMARY_EMAIL = "info@selamtravels.com";
+    const CC_EMAIL = "selamholidays@gmail.com";
 
     useEffect(() => {
         const loadTour = async () => {
@@ -45,10 +48,26 @@ const TourDetail = () => {
         if (!tour || !date) return;
 
         const formattedDate = format(date, "PPP");
-        const message = `Hello, I would like to book the *${tour.title}*.\n\n*Details:*\nName: ${name}\nDate: ${formattedDate}\nGuests: ${guests}\nTotal Price: $${tour.price * guests}\n\nPlease confirm availability.`;
 
-        const encodedMessage = encodeURIComponent(message);
-        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
+        const pricePerPerson = guestType === 'citizen' ? (tour.priceCitizen || tour.price)
+            : guestType === 'eac' ? (tour.priceEAC || tour.price)
+                : tour.price;
+        const total = pricePerPerson * guests;
+
+        const subject = `Booking Request: ${tour.title}`;
+        const body = `Hello, I would like to book the ${tour.title}.
+
+Details:
+Name: ${name}
+Date: ${formattedDate}
+Guests: ${guests}
+Guest Type: ${guestType === 'citizen' ? 'Citizen' : guestType === 'eac' ? 'EAC Member' : 'International'}
+Total Price: $${total}
+
+Please confirm availability.`;
+
+        const mailtoLink = `mailto:${PRIMARY_EMAIL}?cc=${CC_EMAIL}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailtoLink;
     };
 
     if (loading) {
@@ -95,8 +114,20 @@ const TourDetail = () => {
                                         (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2021&q=80';
                                     }}
                                 />
-                                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur text-primary font-bold px-4 py-2 rounded-full shadow-sm">
-                                    ${tour.price} <span className="text-sm font-normal text-tertiary">/ person</span>
+                                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur text-primary font-bold px-4 py-2 rounded-full shadow-sm flex flex-col items-end">
+                                    <div>
+                                        ${tour.price} <span className="text-sm font-normal text-tertiary">/ person</span>
+                                    </div>
+                                    {tour.priceCitizen && (
+                                        <div className="text-sm text-gray-600">
+                                            Citizen: ${tour.priceCitizen}
+                                        </div>
+                                    )}
+                                    {tour.priceEAC && (
+                                        <div className="text-sm text-gray-600">
+                                            EAC: ${tour.priceEAC}
+                                        </div>
+                                    )}
                                 </div>
                             </div>
 
@@ -125,7 +156,7 @@ const TourDetail = () => {
                                 <div className="prose max-w-none text-tertiary mb-8">
                                     <h3 className="text-xl font-semibold mb-2 text-tertiary-dark">Description</h3>
                                     {tour.description.split('\n').map((paragraph, index) => (
-                                        <p key={index} className="mb-4">{paragraph}</p>
+                                        <p key={index} className="mb-4" dangerouslySetInnerHTML={{ __html: paragraph }} />
                                     ))}
                                 </div>
 
@@ -224,14 +255,35 @@ const TourDetail = () => {
                                         />
                                     </div>
 
+                                    <div className="space-y-2">
+                                        <Label>Guest Type</Label>
+                                        <Select
+                                            value={guestType}
+                                            onValueChange={(value: any) => setGuestType(value)}
+                                        >
+                                            <SelectTrigger>
+                                                <SelectValue />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectItem value="international">International (${tour.price})</SelectItem>
+                                                {tour.priceCitizen && (
+                                                    <SelectItem value="citizen">Citizen (${tour.priceCitizen})</SelectItem>
+                                                )}
+                                                {tour.priceEAC && (
+                                                    <SelectItem value="eac">EAC Member (${tour.priceEAC})</SelectItem>
+                                                )}
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
+
                                     <div className="pt-4 border-t border-gray-100 space-y-4">
                                         <div className="flex justify-between items-center text-lg font-semibold">
                                             <span>Total:</span>
-                                            <span>${tour.price * guests}</span>
+                                            <span>${(guestType === 'citizen' ? (tour.priceCitizen || tour.price) : guestType === 'eac' ? (tour.priceEAC || tour.price) : tour.price) * guests}</span>
                                         </div>
 
-                                        <Button type="submit" className="w-full h-12 text-lg bg-[#25D366] hover:bg-[#128C7E] text-white">
-                                            Book via WhatsApp
+                                        <Button type="submit" className="w-full h-12 text-lg bg-primary hover:bg-primary-dark text-white">
+                                            Book via Email
                                         </Button>
                                         <p className="text-xs text-center text-gray-500">
                                             You will be redirected to WhatsApp to confirm your booking details.

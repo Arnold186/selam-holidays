@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Plus, Minus, Upload } from "lucide-react";
+import { Plus, Minus, Upload, Bold, Italic } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -28,6 +28,8 @@ const TourForm = ({ onSuccess, tourId, onCancel }: TourFormProps) => {
         groupSize: "",
         season: "",
         price: 0,
+        priceCitizen: 0,
+        priceEAC: 0,
         discountPrice: 0,
         rating: 5,
         category: "adventure",
@@ -77,6 +79,8 @@ const TourForm = ({ onSuccess, tourId, onCancel }: TourFormProps) => {
                     groupSize: "",
                     season: "",
                     price: 0,
+                    priceCitizen: 0,
+                    priceEAC: 0,
                     discountPrice: 0,
                     rating: 5,
                     category: "adventure",
@@ -113,6 +117,21 @@ const TourForm = ({ onSuccess, tourId, onCancel }: TourFormProps) => {
 
     const handleInputChange = (field: keyof Tour, value: any) => {
         setFormData(prev => ({ ...prev, [field]: value }));
+    };
+
+    const handleFormat = (tag: 'b' | 'i') => {
+        const textarea = document.getElementById('description') as HTMLTextAreaElement;
+        if (!textarea) return;
+
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        const text = formData.description || "";
+        const before = text.substring(0, start);
+        const selection = text.substring(start, end);
+        const after = text.substring(end);
+
+        const newText = `${before}<${tag}>${selection}</${tag}>${after}`;
+        handleInputChange('description', newText);
     };
 
     return (
@@ -247,6 +266,31 @@ const TourForm = ({ onSuccess, tourId, onCancel }: TourFormProps) => {
                                 />
                             </div>
                             <div>
+                                <Label htmlFor="priceCitizen">Citizen Price</Label>
+                                <Input
+                                    id="priceCitizen"
+                                    type="number"
+                                    min="0"
+                                    step="0.01"
+                                    value={formData.priceCitizen || 0}
+                                    onChange={(e) => handleInputChange('priceCitizen', parseFloat(e.target.value))}
+                                />
+                            </div>
+                            <div>
+                                <Label htmlFor="priceEAC">EAC Price</Label>
+                                <Input
+                                    id="priceEAC"
+                                    type="number"
+                                    min="0"
+                                    step="0.01"
+                                    value={formData.priceEAC || 0}
+                                    onChange={(e) => handleInputChange('priceEAC', parseFloat(e.target.value))}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
                                 <Label htmlFor="discountPrice">Discount Price (for large groups)</Label>
                                 <Input
                                     id="discountPrice"
@@ -272,7 +316,29 @@ const TourForm = ({ onSuccess, tourId, onCancel }: TourFormProps) => {
                         </div>
 
                         <div>
-                            <Label htmlFor="description">Description</Label>
+                            <div className="flex justify-between items-center mb-2">
+                                <Label htmlFor="description">Description</Label>
+                                <div className="flex gap-2">
+                                    <Button
+                                        type="button"
+                                        variant="outline"
+                                        size="sm"
+                                        onClick={() => handleFormat('b')}
+                                        title="Bold"
+                                    >
+                                        <Bold className="h-4 w-4" />
+                                    </Button>
+                                    <Button
+                                        type="button"
+                                        variant="outline"
+                                        size="sm"
+                                        onClick={() => handleFormat('i')}
+                                        title="Italic"
+                                    >
+                                        <Italic className="h-4 w-4" />
+                                    </Button>
+                                </div>
+                            </div>
                             <Textarea
                                 id="description"
                                 value={formData.description}

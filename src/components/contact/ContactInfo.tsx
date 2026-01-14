@@ -14,7 +14,7 @@ const ContactInfo = () => {
       }
     }
   };
-  
+
   const itemVariants = {
     hidden: { opacity: 0, y: 10 },
     visible: { opacity: 1, y: 0 }
@@ -29,7 +29,7 @@ const ContactInfo = () => {
     >
       <div className="bg-white rounded-lg shadow-md p-8 h-full">
         <h2 className="text-2xl font-bold text-tertiary-dark mb-6">Contact Information</h2>
-        
+
         <div className="space-y-6">
           <motion.div variants={itemVariants} className="flex items-start">
             <div className="bg-green-100 p-3 rounded-full mr-4">
@@ -43,7 +43,7 @@ const ContactInfo = () => {
               </p>
             </div>
           </motion.div>
-          
+
           <motion.div variants={itemVariants} className="flex items-start">
             <div className="bg-blue-100 p-3 rounded-full mr-4">
               <Phone size={20} className="text-sky-700" />
@@ -54,7 +54,7 @@ const ContactInfo = () => {
               <p className="text-tertiary">+250 785 713 489</p>
             </div>
           </motion.div>
-          
+
           <motion.div variants={itemVariants} className="flex items-start">
             <div className="bg-green-100 p-3 rounded-full mr-4">
               <Mail size={20} className="text-primary" />
@@ -62,10 +62,10 @@ const ContactInfo = () => {
             <div>
               <h3 className="font-semibold text-tertiary-dark mb-1">Email Address</h3>
               <p className="text-tertiary">info@selamtravels.com</p>
-              <p className="text-tertiary">selamholidaysmug@gmail.com</p>
+              <p className="text-tertiary">selamholidays@gmail.com</p>
             </div>
           </motion.div>
-          
+
           <motion.div variants={itemVariants} className="flex items-start">
             <div className="bg-blue-100 p-3 rounded-full mr-4">
               <Clock size={20} className="text-sky-700" />
@@ -78,37 +78,37 @@ const ContactInfo = () => {
             </div>
           </motion.div>
         </div>
-        
+
         <div className="mt-8">
           <h3 className="font-semibold text-tertiary-dark mb-3">Follow Us</h3>
           <div className="flex space-x-4">
-            <motion.a 
-              href="https://web.facebook.com/people/Selam_Travels/100070565520090/?mibextid=LQQJ4d" 
+            <motion.a
+              href="https://web.facebook.com/people/Selam_Travels/100070565520090/?mibextid=LQQJ4d"
               whileHover={{ scale: 1.2, rotate: 5 }}
               className="bg-gray-100 p-3 rounded-full text-primary hover:bg-primary hover:text-white transition-colors"
               aria-label="Facebook"
             >
               <Facebook size={20} />
             </motion.a>
-            <motion.a 
-              href="https://x.com/selam_travels?s=21&t=W5EY4LBYlUE7BDzerRVkYg" 
+            <motion.a
+              href="https://x.com/selam_travels?s=21&t=W5EY4LBYlUE7BDzerRVkYg"
               whileHover={{ scale: 1.2, rotate: 5 }}
               className="bg-gray-100 p-3 rounded-full text-primary hover:bg-primary hover:text-white transition-colors"
               aria-label="Twitter"
             >
-              <FaXTwitter size={20}/>
+              <FaXTwitter size={20} />
               {/* <Twitter size={20} /> */}
             </motion.a>
-            <motion.a 
-              href="https://www.instagram.com/selam_travels?igshid=MzRlODBiNWFlZA%3D%3D" 
+            <motion.a
+              href="https://www.instagram.com/selam_travels?igshid=MzRlODBiNWFlZA%3D%3D"
               whileHover={{ scale: 1.2, rotate: 5 }}
               className="bg-gray-100 p-3 rounded-full text-primary hover:bg-primary hover:text-white transition-colors"
               aria-label="Instagram"
             >
               <Instagram size={20} />
             </motion.a>
-            <motion.a 
-              href="https://www.linkedin.com/company/selam-travel-solutions" 
+            <motion.a
+              href="https://www.linkedin.com/company/selam-travel-solutions"
               whileHover={{ scale: 1.2, rotate: 5 }}
               className="bg-gray-100 p-3 rounded-full text-primary hover:bg-primary hover:text-white transition-colors"
               aria-label="LinkedIn"
