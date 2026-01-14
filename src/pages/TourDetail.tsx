@@ -118,14 +118,22 @@ Please confirm availability.`;
                                     <div>
                                         ${tour.price} <span className="text-sm font-normal text-tertiary">/ person</span>
                                     </div>
-                                    {tour.priceCitizen && (
+                                    {tour.priceCitizen ? (
                                         <div className="text-sm text-gray-600">
                                             Citizen: ${tour.priceCitizen}
                                         </div>
+                                    ) : (
+                                        <div className="text-sm text-gray-600/50">
+                                            Citizen: ${tour.price}
+                                        </div>
                                     )}
-                                    {tour.priceEAC && (
+                                    {tour.priceEAC ? (
                                         <div className="text-sm text-gray-600">
                                             EAC: ${tour.priceEAC}
+                                        </div>
+                                    ) : (
+                                        <div className="text-sm text-gray-600/50">
+                                            EAC: ${tour.price}
                                         </div>
                                     )}
                                 </div>
@@ -266,12 +274,8 @@ Please confirm availability.`;
                                             </SelectTrigger>
                                             <SelectContent>
                                                 <SelectItem value="international">International (${tour.price})</SelectItem>
-                                                {tour.priceCitizen && (
-                                                    <SelectItem value="citizen">Citizen (${tour.priceCitizen})</SelectItem>
-                                                )}
-                                                {tour.priceEAC && (
-                                                    <SelectItem value="eac">EAC Member (${tour.priceEAC})</SelectItem>
-                                                )}
+                                                <SelectItem value="citizen">Citizen (${tour.priceCitizen || tour.price})</SelectItem>
+                                                <SelectItem value="eac">EAC Member (${tour.priceEAC || tour.price})</SelectItem>
                                             </SelectContent>
                                         </Select>
                                     </div>
