@@ -18,6 +18,7 @@ import ChatBot from "./components/ChatBot";
 import TourDetail from "./pages/TourDetail";
 import { tourService } from "@/services/tourService";
 import { initialTours } from "@/data/initialTours";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,7 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />

@@ -205,7 +205,7 @@ const HeroSection = () => {
       {/* Mobile Search - Bottom Sheet Style (Visible only on small screens) */}
       <div className="absolute bottom-0 left-0 right-0 p-4 lg:hidden z-20">
         <div className="bg-white rounded-t-xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)] p-6">
-          <Button className="w-full h-12 text-lg font-semibold bg-primary" onClick={() => document.getElementById('mobile-search-dialog')?.showModal?.()}>
+          <Button className="w-full h-12 text-lg font-semibold bg-primary" onClick={() => navigate('/tours')}>
             <Search size={18} className="mr-2" />
             Find Your Trip
           </Button>
